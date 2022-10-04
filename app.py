@@ -2,9 +2,11 @@ from flask import Flask
 from slack import WebClient
 from slackeventsapi import SlackEventAdapter
 from configuration.env_config import Config
-
+from flask_sqlalchemy import SQLAlchemy
 
 app = Flask(__name__)
+app.config['SQLALCHEMY_DATABASE_URI'] = "postgresql://postgres:vansh@localhost/slackpoint"
+db = SQLAlchemy(app)
 
 #instantiating slack client
 slack_client = WebClient(Config.SLACK_BOT_TOKEN)
@@ -19,4 +21,4 @@ def basic():
 
 
 if __name__ == '__main__':
-    app.run()
+    app.run(debug = True)
