@@ -18,8 +18,7 @@ slack_client = WebClient(Config.SLACK_BOT_TOKEN)
 slack_events_adapter = SlackEventAdapter(
     Config.SLACK_SIGNING_SECRET, "/slack/events", app
 )
-
-
+                                                
 @app.route('/')
 def basic():
     return 'Hello World'
