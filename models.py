@@ -1,38 +1,39 @@
-from app import db 
 from datetime import datetime
+from sqlalchemy import ForeignKey
+from flask_sqlalchemy import SQLAlchemy
+
+db = SQLAlchemy()
 
 class Task(db.Model):
 
     __tablename__ = 'task'
 
-    id = db.Column(db.Integer, primary_key = True)
+    task_id = db.Column(db.Integer, primary_key = True, unique = True, autoincrement=True)
     description = db.Column(db.Text())
     points = db.Column(db.Integer)
     deadline = db.Column(db.DateTime)
     created_on = db.Column(db.DateTime, default = datetime.now())
-    updated_on = db.Column(db.DateTime, default = datetime.now())
+    updated_on = db.Column(db.DateTime)
 
-
-    def __init__(self, description, points, deadline, created_on, updated_on):
-        self.description = description
-        self.points = points
-        self.deadline = deadline
-        self.created_on = created_on
-        self.updated_on = updated_on
-
+    __table_args__ = (
+        db.UniqueConstraint('task_id'),
+    )
 
 class Assignment(db.Model):
 
     __tablename__ = 'assignment'
+    user_id = db.Column(db.Integer, ForeignKey('user.user_id'))
+    assignment_id = db.Column(db.Integer, ForeignKey("task.task_id"), primary_key = True)
+    progress = db.Column(db.Float)
+    assignment_created_on = db.Column(db.DateTime, default = datetime.now())
+    assignment_updated_on = db.Column(db.DateTime)
 
-    id = db.Column(db.Integer, primary_key = True)
-    isDone = 
-    created_on = 
-    updated_on = 
+class User(db.Model):
 
+    __tablename__ = 'user'
 
-    def __init__(self, ):
-        self.isDone = isDone
-        self.created_on = created_on
-        self.updated_on = updated_on
-
+    user_id = db.Column(db.Integer, primary_key = True, autoincrement = True)
+    slack_user_id= db.Column(db.String, unique = True)
+    __table_args__ = (
+        db.UniqueConstraint('user_id'), 
+    )

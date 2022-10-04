@@ -1,36 +1,27 @@
+from flask import Flask, request, jsonify
 from slack import WebClient
+from slackeventsapi import SlackEventAdapter
+from datetime import datetime
+from commands.viewpoints import ViewPoints
 from configuration.env_config import Config
 from flask_sqlalchemy import SQLAlchemy
-import slack
-import os
-from pathlib import Path
-from dotenv import load_dotenv
-from flask import Flask, request, Response
-from slackeventsapi import SlackEventAdapter
-
-
-env_path = Path('.') / '.env'
-load_dotenv(dotenv_path=env_path)
+from sqlalchemy import ForeignKey
+from models import db
 
 app = Flask(__name__)
-# slack_event_adapter = SlackEventAdapter(os.environ['SLACK_SIGNING_SECRET'],'/slack/events',app)
+app.config['SQLALCHEMY_DATABASE_URI'] = Config.SQLALCHEMY_DATABASE_URI
+db.init_app(app)
 
-client = slack.WebClient(token=os.environ['SLACK_BOT_TOKEN'])
-BOT_ID = client.api_call("auth.test")['user_id']
-
-app.config['SQLALCHEMY_DATABASE_URI'] = "postgresql://postgres:1234@localhost/slackpoint"
-db = SQLAlchemy(app)
 
 #instantiating slack client
-slack_client = WebClient(os.environ['SLACK_BOT_TOKEN']) #!changed
-# slack_events_adapter = SlackEventAdapter(
-#     os.environ['SLACK_SIGNING_SECRET'], "/slack/events", app #!changed
-# )
-
-
-# @app.route('/')
-# def basic():
-#     return 'Hello World'
+slack_client = WebClient(Config.SLACK_BOT_TOKEN)
+slack_events_adapter = SlackEventAdapter(
+    Config.SLACK_SIGNING_SECRET, "/slack/events", app
+)
+                                                
+@app.route('/')
+def basic():
+    return 'Hello World'
 
 # @app.route('/message-length', methods=['GET', 'POST'])
 # def message_length():
@@ -59,6 +50,32 @@ def message_count():
 
     print("Text: ",text)
     return Response(), 200
+
+@app.route('/vpending', methods=["POST"])
+def vpending():
+    data = request.form
+    channel_id = data.get('channel_id')
+    user_id = data.get('user_id')
+    text = data.get('text')
+
+    vp = ViewPoints(progress=0.0)
+    payload = vp.get_list()
+
+    return jsonify(payload)
+
+
+@app.route('/vcompleted', methods=["POST"])
+def vcompleted():
+    data = request.form
+    channel_id = data.get('channel_id')
+    user_id = data.get('user_id')
+    text = data.get('text')
+
+    vp = ViewPoints(progress=1.0)
+    payload = vp.get_list()
+
+    return jsonify(payload)
+
 
 if __name__ == '__main__':
     app.run(host="localhost", port=8000, debug=True)
