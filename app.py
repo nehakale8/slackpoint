@@ -1,15 +1,17 @@
 from flask import Flask, request, jsonify
 from slack import WebClient
 from slackeventsapi import SlackEventAdapter
-
+from datetime import datetime
 from commands.viewpoints import ViewPoints
 from configuration.env_config import Config
 from flask_sqlalchemy import SQLAlchemy
-
+from sqlalchemy import ForeignKey
+from models import db
 
 app = Flask(__name__)
 app.config['SQLALCHEMY_DATABASE_URI'] = Config.SQLALCHEMY_DATABASE_URI
-db = SQLAlchemy(app)
+db.init_app(app)
+
 
 #instantiating slack client
 slack_client = WebClient(Config.SLACK_BOT_TOKEN)
@@ -50,4 +52,5 @@ def vcompleted():
 
 
 if __name__ == '__main__':
+    import models
     app.run(debug=True)
