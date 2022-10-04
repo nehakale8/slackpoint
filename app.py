@@ -18,8 +18,8 @@ app = Flask(__name__)
 client = slack.WebClient(token=os.environ['SLACK_BOT_TOKEN'])
 BOT_ID = client.api_call("auth.test")['user_id']
 
-# app.config['SQLALCHEMY_DATABASE_URI'] = "postgresql://postgres:vansh@localhost/slackpoint"
-# db = SQLAlchemy(app)
+app.config['SQLALCHEMY_DATABASE_URI'] = "postgresql://postgres:1234@localhost/slackpoint"
+db = SQLAlchemy(app)
 
 #instantiating slack client
 slack_client = WebClient(os.environ['SLACK_BOT_TOKEN']) #!changed
@@ -43,6 +43,21 @@ slack_client = WebClient(os.environ['SLACK_BOT_TOKEN']) #!changed
 
 @app.route('/message-count', methods=['POST'])
 def message_count():
+    data = request.form
+    channel_id = data.get('channel_id')
+    user_id = data.get('user_id')
+    text = data.get('text')
+
+    #take user_id
+    #text to int
+
+    #fetch points for that task id
+    task_points = 0 #points from above fetch
+
+    #update points in user table
+    #update operation
+
+    print("Text: ",text)
     return Response(), 200
 
 if __name__ == '__main__':
