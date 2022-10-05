@@ -2,6 +2,7 @@ from copy import deepcopy
 import random
 from models import *
 
+
 class CreateTask:
     base_create_task_block_format = {
         "type": "section",

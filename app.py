@@ -27,7 +27,7 @@ def basic():
     return 'Hello World'
 
 
-@app.route('/vpending', methods=["POST"])
+@app.route('/viewpending', methods=["POST"])
 def vpending():
     data = request.form
     channel_id = data.get('channel_id')
@@ -40,7 +40,7 @@ def vpending():
     return jsonify(payload)
 
 
-@app.route('/vcompleted', methods=["POST"])
+@app.route('/viewcompleted', methods=["POST"])
 def vcompleted():
     data = request.form
     channel_id = data.get('channel_id')
@@ -53,15 +53,15 @@ def vcompleted():
     return jsonify(payload)
 
 
-@app.route('/vcreate', methods=["POST"])
-def vcreate():
+@app.route('/create', methods=["POST"])
+def create():
     data = request.form
     text = data.get('text')
     helper = ErrorHelper()
     # match regex of command
     pattern = '^(-d .*) (-p .*) (-ddl .*)$'
     # s = '-d this is my new task -p 100 -ddl 10/10/2022'
-    if not (bool)(re.match(pattern, text)): 
+    if not bool(re.match(pattern, text)):
         payload = helper.get_error_payload("create")
         return jsonify(payload)
 
@@ -73,7 +73,7 @@ def vcreate():
         deadline = args[0][2][5:]
         print("Desc: ", desc, ", Points: ", points, ", Deadline: ", deadline)
         ct = CreateTask()
-        payload = ct.create_task(desc= desc, points= points, deadline= deadline)
+        payload = ct.create_task(desc=desc, points=points, deadline=deadline)
         print(payload)
     else:
         payload = helper.get_error_payload("create")
