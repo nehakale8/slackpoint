@@ -1,7 +1,7 @@
 from copy import deepcopy
 
 
-class Helper:
+class ErrorHelper:
     ErrorPayload = {
         "response_type": "ephemeral",
         "blocks": []

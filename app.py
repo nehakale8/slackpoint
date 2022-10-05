@@ -1,27 +1,27 @@
+import re
+from models import db
 from flask import Flask, request, jsonify
 from slack import WebClient
 from slackeventsapi import SlackEventAdapter
-from datetime import datetime
+
 from commands.viewpoints import ViewPoints
 from configuration.env_config import Config
-from flask_sqlalchemy import SQLAlchemy
-from sqlalchemy import ForeignKey
-from models import db
 from commands.createtask import CreateTask
-from helper import Helper
-import re 
+from helpers.errorhelper import ErrorHelper
+
 
 app = Flask(__name__)
 app.config['SQLALCHEMY_DATABASE_URI'] = Config.SQLALCHEMY_DATABASE_URI
 db.init_app(app)
 
 
-#instantiating slack client
+# instantiating slack client
 slack_client = WebClient(Config.SLACK_BOT_TOKEN)
 slack_events_adapter = SlackEventAdapter(
     Config.SLACK_SIGNING_SECRET, "/slack/events", app
 )
-                                                
+
+
 @app.route('/')
 def basic():
     return 'Hello World'
@@ -57,7 +57,7 @@ def vcompleted():
 def vcreate():
     data = request.form
     text = data.get('text')
-    helper = Helper()
+    helper = ErrorHelper()
     # match regex of command
     pattern = '^(-d .*) (-p .*) (-ddl .*)$'
     # s = '-d this is my new task -p 100 -ddl 10/10/2022'
@@ -79,6 +79,6 @@ def vcreate():
         payload = helper.get_error_payload("create")
     return jsonify(payload)
 
+
 if __name__ == '__main__':
-    import models
     app.run(debug=True)
