@@ -1,11 +1,11 @@
-name: "Test Action"
-description: "Run simple pytest"
-author: "kaleneha997@gmail.com"
+# name: "Test Action"
+# description: "Run simple pytest"
+# author: "kaleneha997@gmail.com"
 
-runs:
-  using: "docker"
-  image: "Dockerfile"
+# runs:
+#   using: "docker"
+#   image: "Dockerfile"
 
-branding:
-  icon: "mic"
-  color: "purple"
+# branding:
+#   icon: "mic"
+#   color: "purple"
