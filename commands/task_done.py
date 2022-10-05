@@ -1,5 +1,6 @@
 
 from models import *
+from helpers.errorhelper import ErrorHelper
 
 
 class TaskDone:
@@ -36,11 +37,23 @@ class TaskDone:
         current_task_id = self.data.get('text')
         current_task_id = int(current_task_id)
         exists = db.session.query(db.exists().where(Task.task_id == current_task_id)).scalar()
+        
+        query = Task.query.outerjoin(Assignment). \
+            add_columns(Assignment.assignment_id, Assignment.progress, Task.task_id,
+                        Task.points ,Task.description, Task.deadline). \
+                            all()
+        # print("query: ",query)
+        helper = ErrorHelper()
+
+        progess = query[0].progress
+
         # if not exists:
         if exists == False:
-            return Response()
-        #check if task is not done
-
+            return helper.get_command_help("no_task_id") 
+        #check if task is done
+        elif exists == True and progess == 1.0:
+            return helper.get_command_help("task_done")
+        # print(query[0].task_id)
         # points = self.get_task_points()
 
         # channel_id = data.get('channel_id')

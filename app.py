@@ -90,8 +90,8 @@ def taskdone():
     # text = data.get('text')
     # print(text)
     td = TaskDone(data)
-    td.update_points()
-    return Response(), 200
+    payload = td.update_points()
+    return jsonify(payload)
 
 
 
