@@ -1,6 +1,5 @@
 from copy import deepcopy
 from commands.help import Help
-import numpy as np
 
 class ErrorHelper:
     error_payload = {
@@ -24,5 +23,5 @@ class ErrorHelper:
         errorBlock_1 = deepcopy(self.error_block_1)
         errorBlock_2 = self.command_help.help(command_name=command)
         error["blocks"].append(errorBlock_1)
-        error["blocks"] = np.append(error["blocks"], errorBlock_2).tolist()
+        error["blocks"].extend(errorBlock_2)
         return error

@@ -1,5 +1,4 @@
 from copy import deepcopy
-import numpy as np
 
 class Help:
     commands_dictionary = {}
@@ -29,7 +28,7 @@ class Help:
         for name in self.commands_dictionary.keys():
             print(name)
             blocks = self.help(name)
-            response_payload["blocks"] = np.append(response_payload["blocks"], blocks).tolist()
+            response_payload["blocks"].extend(blocks)
         return response_payload
 
     def help(self, command_name):
