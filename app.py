@@ -1,6 +1,7 @@
 from commands.task_done import TaskDone
 from flask import Flask, request, jsonify, Response
 import re
+from commands.help import Help
 from models import db
 from slack import WebClient
 from slackeventsapi import SlackEventAdapter
@@ -55,7 +56,7 @@ def basic():
     # print("Text: ",text)
     # return Response(), 200
 
-@app.route('/vpending', methods=["POST"])
+@app.route('/viewpending', methods=["POST"])
 def vpending():
     data = request.form
     channel_id = data.get('channel_id')
@@ -68,7 +69,7 @@ def vpending():
     return jsonify(payload)
 
 
-@app.route('/vcompleted', methods=["POST"])
+@app.route('/viewcompleted', methods=["POST"])
 def vcompleted():
     data = request.form
     channel_id = data.get('channel_id')
@@ -81,6 +82,7 @@ def vcompleted():
     return jsonify(payload)
 
 
+<<<<<<< HEAD
 @app.route('/task-done', methods=["POST"])
 def taskdone():
     data = request.form
@@ -91,14 +93,18 @@ def taskdone():
 
 @app.route('/vcreate', methods=["POST"])
 def vcreate():
+=======
+@app.route('/create', methods=["POST"])
+def create():
+>>>>>>> 333384b948359dd1d75036b913e8439aec1382cc
     data = request.form
     text = data.get('text')
     helper = ErrorHelper()
     # match regex of command
     pattern = '^(-d .*) (-p .*) (-ddl .*)$'
     # s = '-d this is my new task -p 100 -ddl 10/10/2022'
-    if not (bool)(re.match(pattern, text)): 
-        payload = helper.get_error_payload("create")
+    if not bool(re.match(pattern, text)):
+        payload = helper.get_error_payload("createtask")
         return jsonify(payload)
 
     # if command regex is correct, parse the text
@@ -109,12 +115,17 @@ def vcreate():
         deadline = args[0][2][5:]
         print("Desc: ", desc, ", Points: ", points, ", Deadline: ", deadline)
         ct = CreateTask()
-        payload = ct.create_task(desc= desc, points= points, deadline= deadline)
+        payload = ct.create_task(desc=desc, points=points, deadline=deadline)
         print(payload)
     else:
-        payload = helper.get_error_payload("create")
+        payload = helper.get_error_payload("createtask")
     return jsonify(payload)
 
+@app.route('/help', methods=["POST"])
+def help():
+    h = Help()
+    payload = h.help_all()
+    return jsonify(payload)
 
 if __name__ == '__main__':
     app.run(host="localhost", port=8000, debug=True)
