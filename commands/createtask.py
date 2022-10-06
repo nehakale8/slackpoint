@@ -2,7 +2,6 @@ from copy import deepcopy
 import random
 from models import *
 
-
 class CreateTask:
     base_create_task_block_format = {
         "type": "section",
@@ -21,8 +20,6 @@ class CreateTask:
         }
 
     def create_task(self, desc, points, deadline):
-        # db query to create task and return the id
-        # parse them
         # DB call to add task, returns id
         task = Task()
         task.description = desc
@@ -32,7 +29,16 @@ class CreateTask:
         db.session.commit()
         db.session.refresh(task)
 
+        # task id
         id = task.task_id
+
+        # add the task in assignment, without user assignment
+        assignment = Assignment()
+        assignment.assignment_id = id
+        assignment.progress = 0
+        db.session.add(assignment)
+        db.session.commit()
+
         response = deepcopy(self.base_create_task_block_format)
         response["text"]["text"] = response["text"]["text"].format(greeting=random.choice(self.greetings), id=id)
         self.payload["blocks"].append(response)
