@@ -28,33 +28,6 @@ slack_events_adapter = SlackEventAdapter(
 def basic():
     return 'Hello World'
 
-# @app.route('/message-length', methods=['GET', 'POST'])
-# def message_length():
-#     data = request.form
-#     channel_id = data.get('channel_id')
-#     user_id = data.get('user_id')
-#     text = data.get('text')
-#     client.chat_postEphemeral(channel=channel_id, user=user_id, text="Length of message: " + str(len(text)))
-#     return Response(), 200
-
-# @app.route('/message-count', methods=['POST'])
-# def message_count():
-#     data = request.form
-#     channel_id = data.get('channel_id')
-#     user_id = data.get('user_id')
-#     text = data.get('text')
-
-    #take user_id
-    #text to int
-
-    #fetch points for that task id
-    task_points = 0 #points from above fetch
-
-    #update points in user table
-    #update operation
-
-    # print("Text: ",text)
-    # return Response(), 200
 
 @app.route('/viewpending', methods=["POST"])
 def vpending():
@@ -82,7 +55,6 @@ def vcompleted():
     return jsonify(payload)
 
 
-<<<<<<< HEAD
 @app.route('/task-done', methods=["POST"])
 def taskdone():
     data = request.form
@@ -91,12 +63,8 @@ def taskdone():
     return jsonify(payload)
 
 
-@app.route('/vcreate', methods=["POST"])
-def vcreate():
-=======
 @app.route('/create', methods=["POST"])
 def create():
->>>>>>> 333384b948359dd1d75036b913e8439aec1382cc
     data = request.form
     text = data.get('text')
     helper = ErrorHelper()
