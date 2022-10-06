@@ -84,16 +84,9 @@ def vcompleted():
 @app.route('/task-done', methods=["POST"])
 def taskdone():
     data = request.form
-    # print(type(data))
-    # channel_id = data.get('channel_id')
-    # user_id = data.get('user_id')
-    # text = data.get('text')
-    # print(text)
     td = TaskDone(data)
     payload = td.update_points()
     return jsonify(payload)
-
-
 
 
 @app.route('/vcreate', methods=["POST"])

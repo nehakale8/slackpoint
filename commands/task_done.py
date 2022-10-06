@@ -1,16 +1,9 @@
 
 from models import *
 from helpers.errorhelper import ErrorHelper
-
+import select
 
 class TaskDone:
-    base_point_block_format = {
-        "type": "section",
-        "text": {
-            "type": "mrkdwn",
-            "text": ">User {user_id} completed task {task_id}... Now stands on {points} - SP"
-        }
-    }
     def __init__(self, data):
         self.data = data
         self.payload = {
@@ -18,49 +11,29 @@ class TaskDone:
             "blocks": []
         }
     
-
-    def get_task_points():
-        
-
-        #parse task_id
-        pass
-    
-    #get points for corresponding task
-    # def get_points(self):
-    #     #query db for points of corresponding task
-    #     pass
-
     def update_points(self):
 
-        #check if task id exists
-        task = Task()
-        current_task_id = self.data.get('text')
-        current_task_id = int(current_task_id)
-        exists = db.session.query(db.exists().where(Task.task_id == current_task_id)).scalar()
+        current_task_id = int(self.data.get('text'))
         
-        query = Task.query.outerjoin(Assignment). \
-            add_columns(Assignment.assignment_id, Assignment.progress, Task.task_id,
-                        Task.points ,Task.description, Task.deadline). \
-                            all()
-        # print("query: ",query)
+        #check if task id exists
+        exists = db.session.query(db.exists().where(Task.task_id == current_task_id)).scalar()
+    
         helper = ErrorHelper()
+        task_progress = Assignment.query.filter_by(assignment_id = current_task_id, progress = 0.0).all()
 
-        progess = query[0].progress
-
-        # if not exists:
         if exists == False:
             return helper.get_command_help("no_task_id") 
+        
         #check if task is done
-        elif exists == True and progess == 1.0:
+        elif exists == True and len(task_progress) == 0:
+            return helper.get_command_help("task_already_done")
+
+        #if task is not done
+        elif exists == True and task_progress[0].progress == 0.0:
+            db.session.query(Assignment).\
+                filter(Assignment.assignment_id == current_task_id).\
+                update({'progress': 1.0})
+            db.session.commit()
             return helper.get_command_help("task_done")
-        # print(query[0].task_id)
-        # points = self.get_task_points()
-
-        # channel_id = data.get('channel_id')
-        # user_id = data.get('user_id')
-        # text = data.get('text')
-
-
-        # message = "User x completed task y successfully! current points: "
         pass
     
