@@ -1,7 +1,8 @@
+from commands.task_done import TaskDone
+from flask import Flask, request, jsonify, Response
 import re
 from commands.help import Help
 from models import db
-from flask import Flask, request, jsonify
 from slack import WebClient
 from slackeventsapi import SlackEventAdapter
 
@@ -54,6 +55,14 @@ def vcompleted():
     return jsonify(payload)
 
 
+@app.route('/task-done', methods=["POST"])
+def taskdone():
+    data = request.form
+    td = TaskDone(data)
+    payload = td.update_points()
+    return jsonify(payload)
+
+
 @app.route('/create', methods=["POST"])
 def create():
     data = request.form
@@ -87,4 +96,4 @@ def help():
     return jsonify(payload)
 
 if __name__ == '__main__':
-    app.run(debug=True)
+    app.run(host="localhost", port=8000, debug=True)
