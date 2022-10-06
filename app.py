@@ -1,4 +1,5 @@
 import re
+from commands.help import Help
 from models import db
 from flask import Flask, request, jsonify
 from slack import WebClient
@@ -62,7 +63,7 @@ def create():
     pattern = '^(-d .*) (-p .*) (-ddl .*)$'
     # s = '-d this is my new task -p 100 -ddl 10/10/2022'
     if not bool(re.match(pattern, text)):
-        payload = helper.get_error_payload("create")
+        payload = helper.get_error_payload("createtask")
         return jsonify(payload)
 
     # if command regex is correct, parse the text
@@ -76,9 +77,14 @@ def create():
         payload = ct.create_task(desc=desc, points=points, deadline=deadline)
         print(payload)
     else:
-        payload = helper.get_error_payload("create")
+        payload = helper.get_error_payload("createtask")
     return jsonify(payload)
 
+@app.route('/help', methods=["POST"])
+def help():
+    h = Help()
+    payload = h.help_all()
+    return jsonify(payload)
 
 if __name__ == '__main__':
     app.run(debug=True)
