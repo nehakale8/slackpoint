@@ -1,5 +1,5 @@
+from commands.taskdone import TaskDone
 from commands.leaderboard import Leaderboard
-from commands.task_done import TaskDone
 from flask import Flask, make_response, request, jsonify, Response
 import json
 
@@ -87,7 +87,7 @@ def vcompleted():
     return jsonify(payload)
 
 
-@app.route('/task-done', methods=["POST"])
+@app.route('/taskdone', methods=["POST"])
 def taskdone():
     data = request.form
     td = TaskDone(data)
