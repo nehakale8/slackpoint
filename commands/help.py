@@ -12,7 +12,7 @@ class Help:
     }
 
     def __init__(self):
-        self.commands_dictionary["createtask"] = ["*Create Task*", ">To create a task, follow the format: \n>*-d* [description of task] *-p* [points of the task] *-ddl* [deadline of the task].\n>For example: */create* *-d* Hey! This is my new task *-p* 100 *-ddl* 15/10/2022"]
+        self.commands_dictionary["createtask"] = ["*Create Task*", ">To create a task, just try the command */create-task* and you would receive a message from Slack to fill out the details of the task.\n>Enter the description, deadline and the points of the task.\n>For example:\n>*Description*: Hey! This is my new task\n>*Deadline*: 12/31/2022 (just select a date from the date picker)\n>*Points*: 5 (select a point from 1 to 5)\n>And that's it! You should receive a reply from Slack with the generated *Task ID*."]
         self.commands_dictionary["viewpoints"] = ["*View Points*", ">To view points, follow the format:"]
         self.commands_dictionary["completetask"] = ["*Complete Task*", ">To complete a task, follow the format:"]
         self.commands_dictionary["leaderboard"] = ["*Leaderboard*", ">To view the leaderboard:"]
@@ -26,7 +26,6 @@ class Help:
     def help_all(self):
         response_payload = deepcopy(self.payload)
         for name in self.commands_dictionary.keys():
-            print(name)
             blocks = self.help(name)
             response_payload["blocks"].extend(blocks)
         return response_payload
