@@ -1,4 +1,4 @@
-from commands.task_done import TaskDone
+from commands.taskdone import TaskDone
 from flask import Flask, request, jsonify, Response
 import re
 from commands.help import Help
@@ -55,7 +55,7 @@ def vcompleted():
     return jsonify(payload)
 
 
-@app.route('/task-done', methods=["POST"])
+@app.route('/taskdone', methods=["POST"])
 def taskdone():
     data = request.form
     td = TaskDone(data)
@@ -89,11 +89,13 @@ def create():
         payload = helper.get_error_payload("createtask")
     return jsonify(payload)
 
+
 @app.route('/help', methods=["POST"])
 def help():
     h = Help()
     payload = h.help_all()
     return jsonify(payload)
+
 
 if __name__ == '__main__':
     app.run(host="localhost", port=8000, debug=True)
