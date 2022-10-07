@@ -1,4 +1,5 @@
 from commands.taskdone import TaskDone
+from commands.leaderboard import Leaderboard
 from flask import Flask, request, jsonify, Response
 import re
 from commands.help import Help
@@ -94,6 +95,13 @@ def create():
 def help():
     h = Help()
     payload = h.help_all()
+    return jsonify(payload)
+
+
+@app.route('/leaderboard', methods=["POST"])
+def leaderboard():
+    l = Leaderboard()
+    payload = l.view_leaderboard()
     return jsonify(payload)
 
 
