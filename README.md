@@ -35,6 +35,8 @@ A no-nonsense serious and dedicated prankster / comedian of the group, with an u
 ## What we do?
 A lot of teams use Slack to get things done. However when you have ton of things to do with no short term rewards in sight, it gets difficult to check off those tasks. That's where SlackPoint comes to the rescue! SlackPoint aims to make work more fun and get people motivated to finish their tasks by gamifying Slack!
 
+## Chat Channel
+<code><a href="https://app.slack.com/client/T03VB79B2GG/C03U705CJ15" target="_blank"><img height="50" width="100" src="https://user-images.githubusercontent.com/111834635/194175304-834d5663-b6bb-4e38-981d-98bc1bf028b8.png"></a></code>
 
 ## Working of the project
 
