@@ -23,5 +23,17 @@ class ErrorHelper:
         errorBlock_1 = deepcopy(self.error_block_1)
         errorBlock_2 = self.command_help.help(command_name=command)
         error["blocks"].append(errorBlock_1)
-        error["blocks"].extend(errorBlock_2)
+        error["blocks"].append(errorBlock_2)
         return error
+
+    def get_command_help(self, command):
+        command_help = ""
+        if command == "create":
+            command_help = ">To create a task, follow the format: \n*-d* [description of task] *-p* [points of the task] *-ddl* [deadline of the task].\nFor example: */create* *-d* Hey! This is my new task *-p* 100 *-ddl* 15/10/2022"
+        elif command == "no_task_id":
+            command_help = "The given Task ID does not exist! Please try again..."
+        elif command == "task_already_done":
+            command_help = "The given Task was already completed!"
+        elif command == "task_done":
+            command_help = "Congratulations your task is completed now!"
+        return command_help

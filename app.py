@@ -1,7 +1,9 @@
+from commands.taskdone import TaskDone
+from commands.leaderboard import Leaderboard
+from flask import Flask, request, jsonify, Response
 import re
 from commands.help import Help
 from models import db
-from flask import Flask, request, jsonify
 from slack import WebClient
 from slackeventsapi import SlackEventAdapter
 
@@ -54,6 +56,14 @@ def vcompleted():
     return jsonify(payload)
 
 
+@app.route('/taskdone', methods=["POST"])
+def taskdone():
+    data = request.form
+    td = TaskDone(data)
+    payload = td.update_points()
+    return jsonify(payload)
+
+
 @app.route('/create', methods=["POST"])
 def create():
     data = request.form
@@ -80,11 +90,20 @@ def create():
         payload = helper.get_error_payload("createtask")
     return jsonify(payload)
 
+
 @app.route('/help', methods=["POST"])
 def help():
     h = Help()
     payload = h.help_all()
     return jsonify(payload)
 
+
+@app.route('/leaderboard', methods=["POST"])
+def leaderboard():
+    l = Leaderboard()
+    payload = l.view_leaderboard()
+    return jsonify(payload)
+
+
 if __name__ == '__main__':
-    app.run(debug=True)
+    app.run(host="localhost", port=8000, debug=True)
