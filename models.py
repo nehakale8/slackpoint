@@ -11,7 +11,7 @@ class Task(db.Model):
     task_id = db.Column(db.Integer, primary_key=True, unique=True, autoincrement=True)
     description = db.Column(db.Text())
     points = db.Column(db.Integer)
-    deadline = db.Column(db.DateTime)
+    deadline = db.Column(db.Date)
     created_on = db.Column(db.DateTime, default=datetime.now())
     updated_on = db.Column(db.DateTime)
 
@@ -33,7 +33,8 @@ class User(db.Model):
     __tablename__ = 'user'
 
     user_id = db.Column(db.Integer, primary_key=True, autoincrement=True)
-    slack_user_id= db.Column(db.String, unique=True)
+    slack_user_id = db.Column(db.String, unique=True)
+
     __table_args__ = (
         db.UniqueConstraint('user_id'), 
     )
