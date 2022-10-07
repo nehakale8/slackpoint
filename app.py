@@ -1,3 +1,5 @@
+from aiohttp import payload_type
+from commands.leaderboard import Leaderboard
 from commands.task_done import TaskDone
 from flask import Flask, request, jsonify, Response
 import re
@@ -89,11 +91,20 @@ def create():
         payload = helper.get_error_payload("createtask")
     return jsonify(payload)
 
+
 @app.route('/help', methods=["POST"])
 def help():
     h = Help()
     payload = h.help_all()
     return jsonify(payload)
+
+
+@app.route('/leaderboard', methods=["POST"])
+def leaderboard():
+    l = Leaderboard()
+    payload = l.view_leaderboard()
+    return jsonify(payload)
+
 
 if __name__ == '__main__':
     app.run(host="localhost", port=8000, debug=True)
