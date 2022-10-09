@@ -24,10 +24,6 @@ jobs:
     - name: Run the tests
       run: |
           pytest --cov=./ --cov-report=xml
-      ignore:
-        - "configuration"
-        - "setup.py"
-        - "app.py"
     - name: Upload coverage to Codecov
       uses: codecov/codecov-action@v1
       with:
