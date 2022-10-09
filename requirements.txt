@@ -10,3 +10,5 @@ black==22.10.0
 pylint==2.15.3
 sphinx==5.2.3
 sphinx_rtd_theme==1.0.0
+coverage==6.5.0
+pytest-cov==4.0.0
