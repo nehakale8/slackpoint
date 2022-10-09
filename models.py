@@ -6,7 +6,7 @@ db = SQLAlchemy()
 
 
 class Task(db.Model):
-    __tablename__ = 'task'
+    __tablename__ = "task"
 
     task_id = db.Column(db.Integer, primary_key=True, unique=True, autoincrement=True)
     description = db.Column(db.Text())
@@ -15,14 +15,12 @@ class Task(db.Model):
     created_on = db.Column(db.DateTime, default=datetime.now())
     updated_on = db.Column(db.DateTime)
 
-    __table_args__ = (
-        db.UniqueConstraint('task_id'),
-    )
+    __table_args__ = (db.UniqueConstraint("task_id"),)
 
 
 class Assignment(db.Model):
-    __tablename__ = 'assignment'
-    user_id = db.Column(db.Integer, ForeignKey('user.user_id'))
+    __tablename__ = "assignment"
+    user_id = db.Column(db.Integer, ForeignKey("user.user_id"))
     assignment_id = db.Column(db.Integer, ForeignKey("task.task_id"), primary_key=True)
     progress = db.Column(db.Float)
     assignment_created_on = db.Column(db.DateTime, default=datetime.now())
@@ -30,11 +28,9 @@ class Assignment(db.Model):
 
 
 class User(db.Model):
-    __tablename__ = 'user'
+    __tablename__ = "user"
 
     user_id = db.Column(db.Integer, primary_key=True, autoincrement=True)
     slack_user_id = db.Column(db.String, unique=True)
 
-    __table_args__ = (
-        db.UniqueConstraint('user_id'), 
-    )
+    __table_args__ = (db.UniqueConstraint("user_id"),)

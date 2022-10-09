@@ -9,6 +9,3 @@ class Config(object):
     SLACK_SIGNING_SECRET = os.environ.get("SLACK_SIGNING_SECRET")
     SLACK_BOT_TOKEN = os.environ.get("SLACK_BOT_TOKEN")
     VERIFICATION_TOKEN = os.environ.get("VERIFICATION_TOKEN")
-
-
-
