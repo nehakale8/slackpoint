@@ -41,7 +41,7 @@ def test_view_completed_2tasks(
     assert payload == expected_payload
 
 
-def test_view_pending_0tasks(
+def test_view_completed_0tasks(
     mock_get_sqlalchemy,
 ):
     # Mocking DB call
