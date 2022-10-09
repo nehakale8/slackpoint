@@ -5,7 +5,8 @@ from models import Task, Assignment, User
 
 @pytest.fixture
 def mock_get_sqlalchemy(mocker):
-    mock = mocker.patch("flask_sqlalchemy.model._QueryProperty.__get__").return_value = mocker.Mock()
+    mock = mocker.patch(
+        "flask_sqlalchemy.model._QueryProperty.__get__").return_value = mocker.Mock()
     return mock
 
 
@@ -62,37 +63,3 @@ def mock_completed_task_4():
         deadline="2022-08-26"
     )
     return my_model
-
-@pytest.fixture
-def mock_leaderboard_task_5():
-    my_model = Task(
-        task_id=5,
-        description="This is Task 4",
-        points=18,
-        deadline="2022-08-26"
-    )
-    my_model2 = User(
-        slack_user_id="nkale2"
-    )
-    my_model3 = Assignment(
-        user_id = my_model2,
-        assignment_id = my_model
-    )
-    return my_model3
-
-@pytest.fixture
-def mock_leaderboard_task_6():
-    my_model = Task(
-        task_id=6,
-        description="This is Task 4",
-        points=12,
-        deadline="2022-08-26"
-    )
-    my_model2 = User(
-        slack_user_id="vpmehta"
-    )
-    my_model3 = Assignment(
-        user_id = my_model2,
-        assignment_id = my_model
-    )
-    return my_model3
