@@ -141,3 +141,7 @@ An old, very old, almost ancient bespectacled individual (so many bespectacled m
 A self-proclaimed charming good-looking handsome individual who is a Java enthusiast. A constant source of good jokes and efficient code, he has charmed his way into our group, just like Shah Rukh Khan does it in Bollywood movies.
 - [@RitwikVaidya](https://www.github.com/ritwik4690)
 A no-nonsense serious and dedicated prankster / comedian of the group, with an unique knack at solving programming questions and a strong supporter of C++ programming language.
+
+### Reach out to us!
+
+For any doubts or queries, reach out to our ``<developer>`` team slackpoint.developers@gmail.com
