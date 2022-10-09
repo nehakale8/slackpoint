@@ -5,6 +5,9 @@ from sqlalchemy import desc, func
 
 
 class Leaderboard:
+    """
+    This class handles the Create Leaderboard functionality.
+    """
     base_leaderboard_block_format = {
         "type": "section",
         "text": {
@@ -14,12 +17,32 @@ class Leaderboard:
     }
 
     def __init__(self):
+        """
+        Constructor to initialize payload object
+
+        :param: 
+        :type: 
+        :raise:
+        :return: None
+        :rtype: None
+
+        """
         self.payload = {
             "response_type": "ephemeral",
             "blocks": []
         }
 
     def view_leaderboard(self, top_k: int = 5) -> dict:
+        """
+        Generates leaderboard according to the highest points scorers, returns top five contenders from DB
+
+        :param top_k: Provision to generate top k contenders in leaderboard, default value: 5
+        :type top_k: int
+        :raise:
+        :return: Payload object containing details about the top 5 contenders of SlackPoint
+        :rtype: dict[str, Any]
+
+        """
         top_5_leaderboard = Assignment.query.join(Task).join(User). \
             with_entities(User.user_id, User.slack_user_id, func.sum(Task.points).label("total_points")). \
             filter(Assignment.progress == 1). \

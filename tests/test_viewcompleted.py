@@ -7,6 +7,20 @@ def test_view_completed_2tasks(
     mock_completed_task_4,
     mock_get_sqlalchemy,
 ):
+    """
+    Test the view pending command
+
+    :param mock_completed_task_3: Mocked Task object 1
+    :type mock_completed_task_3: Task
+    :param mock_completed_task_4: Mocked Task object 2
+    :type mock_completed_task_4: Task
+    :param mock_get_sqlalchemy: Mocked SQL Alchemy object  
+    :type mock_get_sqlalchemy: Any
+    :raise:
+    :return: Assert if test case executed successfully
+    :rtype: bool
+
+    """
     # Mocking DB call
     mock_get_sqlalchemy.join.return_value.\
         add_columns.return_value.\
@@ -44,6 +58,16 @@ def test_view_completed_2tasks(
 def test_view_completed_0tasks(
     mock_get_sqlalchemy,
 ):
+    """
+    Test the view pending command
+
+    :param mock_get_sqlalchemy: Mocked SQL Alchemy object  
+    :type mock_get_sqlalchemy: Any
+    :raise:
+    :return: Assert if test case executed successfully
+    :rtype: bool
+
+    """
     # Mocking DB call
     mock_get_sqlalchemy.join.return_value.\
         add_columns.return_value.\

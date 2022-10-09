@@ -6,6 +6,9 @@ db = SQLAlchemy()
 
 
 class Task(db.Model):
+    """
+    This class is a database model for the Task entity.
+    """
     __tablename__ = 'task'
 
     task_id = db.Column(db.Integer, primary_key=True, unique=True, autoincrement=True)
@@ -21,6 +24,9 @@ class Task(db.Model):
 
 
 class Assignment(db.Model):
+    """
+    This class is a database model for the Assignment entity.
+    """
     __tablename__ = 'assignment'
     user_id = db.Column(db.Integer, ForeignKey('user.user_id'))
     assignment_id = db.Column(db.Integer, ForeignKey("task.task_id"), primary_key=True)
@@ -30,6 +36,9 @@ class Assignment(db.Model):
 
 
 class User(db.Model):
+    """
+    This class is a database model for the User entity.
+    """
     __tablename__ = 'user'
 
     user_id = db.Column(db.Integer, primary_key=True, autoincrement=True)
