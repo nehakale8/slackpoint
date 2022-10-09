@@ -64,7 +64,7 @@ def mock_completed_task_4():
     return my_model
 
 @pytest.fixture
-def mock_completed_task_5():
+def mock_leaderboard_task_5():
     my_model = Task(
         task_id=5,
         description="This is Task 4",
@@ -74,7 +74,7 @@ def mock_completed_task_5():
     return my_model
 
 @pytest.fixture
-def mock_completed_task_6():
+def mock_leaderboard_task_6():
     my_model = Task(
         task_id=6,
         description="This is Task 4",
