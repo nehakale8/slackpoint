@@ -7,6 +7,7 @@
 [![build](https://github.com/mithildani/se22-hw1-grp14/actions/workflows/test.yml/badge.svg)](https://github.com/mithildani/se22-hw1-grp14/actions)
 [![GitHub top language](https://img.shields.io/github/languages/top/mithildani/se22-hw1-grp14)](https://docs.python.org/3/)
 [![GitHub last commit](https://img.shields.io/github/last-commit/mithildani/se22-hw1-grp14)](https://github.com/mithildani/se22-hw1-grp14/commits/main)
+[![codecov](https://codecov.io/gh/nehakale8/slackpoint/branch/main/graph/badge.svg?token=1H92SAVB5S)](https://codecov.io/gh/nehakale8/slackpoint)
 
 
 Gamify your slack tasks! 💻
