@@ -18,13 +18,13 @@ class ErrorHelper:
     def __init__(self) -> None:
         self.command_help = Help()
         
-    def get_error_payload(self, command):
+    def get_error_payload_blocks(self, command):
         error = deepcopy(self.error_payload)
         errorBlock_1 = deepcopy(self.error_block_1)
         errorBlock_2 = self.command_help.help(command_name=command)
         error["blocks"].append(errorBlock_1)
-        error["blocks"].append(errorBlock_2)
-        return error
+        error["blocks"].extend(errorBlock_2)
+        return error["blocks"]
 
     def get_command_help(self, command):
         command_help = ""
