@@ -1,0 +1,11 @@
+name: "Test Action"
+description: "Run simple pytest"
+author: "kaleneha997@gmail.com"
+
+runs:
+  using: "docker"
+  image: "Dockerfile"
+
+branding:
+  icon: "mic"
+  color: "purple"
