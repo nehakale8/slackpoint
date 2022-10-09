@@ -1,6 +1,6 @@
 import pytest
 
-from models import Task, Assignment, User
+from models import Task, Assignment
 
 
 @pytest.fixture
@@ -55,29 +55,6 @@ def mock_completed_task_3():
 
 @pytest.fixture
 def mock_completed_task_4():
-    my_model = Task(
-        task_id=4,
-        description="This is Task 4",
-        points=5,
-        deadline="2022-08-26"
-    )
-    return my_model
-
-@pytest.fixture
-def mock_leaderboard_task_5():
-    my_model = Task(
-        task_id=4,
-        description="This is Task 4",
-        points=5,
-        deadline="2022-08-26"
-    )
-    my_model2=User(
-        slack_user_id="nkale2"
-    )
-    return my_model, my_model2
-
-@pytest.fixture
-def mock_leaderboard_task_6():
     my_model = Task(
         task_id=4,
         description="This is Task 4",
