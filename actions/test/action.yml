@@ -1,6 +1,6 @@
 name: "Test Action"
 description: "Run simple pytest"
-author: "kaleneha997@gmail.com"
+author: "danimithil@gmail.com"
 
 runs:
   using: "docker"
