@@ -28,6 +28,16 @@ slack_events_adapter = SlackEventAdapter(
 
 @app.route("/slack/interactive-endpoint", methods=["POST"])
 def interactive_endpoint():
+    """
+    All interactive events like button click, input fields are received in this endpoint. We use this endpoint to handle the click event of 'Add task' button of create-task command.
+
+    :param:
+    :type:
+    :raise:
+    :return: Response object with 200 HTTP status
+    :rtype: Response
+
+    """
     payload = json.loads(request.form.get("payload"))
     if payload["type"] == "block_actions":
         actions = payload["actions"]
@@ -69,11 +79,31 @@ def interactive_endpoint():
 
 @app.route("/")
 def basic():
+    """
+    Health check endpoint
+
+    :param:
+    :type:
+    :raise:
+    :return: 'Hello World' - the official health check response text
+    :rtype: str
+
+    """
     return "Hello World"
 
 
 @app.route("/viewpending", methods=["POST"])
 def vpending():
+    """
+    Endpoint to view the pending tasks
+
+    :param:
+    :type:
+    :raise:
+    :return: Response object with payload object containing details of pending tasks
+    :rtype: Response
+
+    """
     data = request.form
     channel_id = data.get("channel_id")
     user_id = data.get("user_id")
@@ -87,6 +117,17 @@ def vpending():
 
 @app.route("/viewcompleted", methods=["POST"])
 def vcompleted():
+    """
+    Endpoint to view the completed tasks
+
+    :param:
+    :type:
+    :raise:
+    :return: Response object with payload object containing details of completed tasks
+    :rtype: Response
+
+    """
+
     data = request.form
     channel_id = data.get("channel_id")
     user_id = data.get("user_id")
@@ -100,6 +141,17 @@ def vcompleted():
 
 @app.route("/taskdone", methods=["POST"])
 def taskdone():
+    """
+    Endpoint to mark a task as completed
+
+    :param:
+    :type:
+    :raise:
+    :return: Response object with payload containing task completion message
+    :rtype: Response
+
+    """
+
     data = request.form
     td = TaskDone(data)
     payload = td.update_points()
@@ -108,18 +160,40 @@ def taskdone():
 
 @app.route("/create", methods=["POST"])
 def create():
+    """
+    Endpoint to create a new task, this endpoint triggers an ephemeral message for the user to enter task details for creation
+
+    :param:
+    :type:
+    :raise:
+    :return: Response object with 200 HTTP status
+    :rtype: Response
+
+    """
+
     ct = CreateTask()
     blocks = ct.create_task_input_blocks()
+
     data = request.form
     channel_id = data.get("channel_id")
     user_id = data.get("user_id")
     slack_client.chat_postEphemeral(channel=channel_id, user=user_id, blocks=blocks)
-
     return Response(), 200
 
 
 @app.route("/help", methods=["POST"])
 def help():
+    """
+    A helper endpoint to view all commands and how to use them
+
+    :param:
+    :type:
+    :raise:
+    :return: Response object with payload object containing details of all commands and how to use them
+    :rtype: Response
+
+    """
+
     h = Help()
     payload = h.help_all()
     return jsonify(payload)
@@ -127,6 +201,17 @@ def help():
 
 @app.route("/leaderboard", methods=["POST"])
 def leaderboard():
+    """
+    Endpoint to view the leaderboard
+
+    :param:
+    :type:
+    :raise:
+    :return: Response object with payload object containing details of champions leading the SlackPoint challenge
+    :rtype: Response
+
+    """
+
     l = Leaderboard()
     payload = l.view_leaderboard()
     return jsonify(payload)

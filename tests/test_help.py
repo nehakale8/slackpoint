@@ -1,7 +1,18 @@
 from commands.help import Help
 
 
-def test_leaderboard_no_param():
+def test_help():
+    """
+    Test the help command
+
+    :param:
+    :type:
+    :raise:
+    :return: Assert if test case executed successfully
+    :rtype: bool
+
+    """
+
     # test function
     h = Help()
     payload = h.help_all()

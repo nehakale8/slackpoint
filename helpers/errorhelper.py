@@ -14,9 +14,30 @@ class ErrorHelper:
     }
 
     def __init__(self) -> None:
+        """
+        Constructor to initialize command_help object
+
+        :param:
+        :type:
+        :raise:
+        :return: None
+        :rtype: None
+
+        """
+
         self.command_help = Help()
 
     def get_error_payload_blocks(self, command):
+        """
+        Get compiled error blocks for a particular command
+
+        :param command:  Command name
+        :type command: str
+        :raise:
+        :return: List of blocks
+        :rtype: list[dict[str, Any]]
+
+        """
         error = deepcopy(self.error_payload)
         errorBlock_1 = deepcopy(self.error_block_1)
         errorBlock_2 = self.command_help.help(command_name=command)
@@ -25,6 +46,16 @@ class ErrorHelper:
         return error["blocks"]
 
     def get_command_help(self, command):
+        """
+        Get compiled error blocks for a particular command
+
+        :param command: Command name
+        :type command: str
+        :raise:
+        :return: Error message for given command name
+        :rtype: str
+
+        """
         command_help = ""
         if command == "create":
             command_help = ">To create a task, follow the format: \n*-d* [description of task] *-p* [points of the task] *-ddl* [deadline of the task].\nFor example: */create* *-d* Hey! This is my new task *-p* 100 *-ddl* 15/10/2022"

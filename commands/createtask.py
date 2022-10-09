@@ -4,6 +4,10 @@ from models import *
 
 
 class CreateTask:
+    """
+    This class handles the Create Task functionality.
+    """
+
     base_create_task_block_format = {
         "type": "section",
         "text": {
@@ -15,12 +19,29 @@ class CreateTask:
     greetings = ["Awesome", "Great", "Congratulations", "Well done", "Let's go"]
 
     def __init__(self):
-        self.payload = {
-            "response_type": "ephemeral", 
-            "blocks": []
-        }
+        """
+        Constructor to initialize payload object
+
+        :param:
+        :type:
+        :raise:
+        :return: None
+        :rtype: None
+
+        """
+        self.payload = {"response_type": "ephemeral", "blocks": []}
 
     def create_task_input_blocks(self):
+        """
+        Create blocks list containing input fields for description, deadline, points of a task, along with a button to create the task
+
+        :param:
+        :type:
+        :raise:
+        :return: Blocks list
+        :rtype: list
+
+        """
         block_description = {
             "type": "input",
             "element": {
@@ -76,10 +97,7 @@ class CreateTask:
         }
         block_actions_button = {
             "type": "button",
-            "text": {
-                "type": "plain_text", 
-                "text": "Create task"
-            },
+            "text": {"type": "plain_text", "text": "Create task"},
             "action_id": "create_action_button",
         }
         block_actions = {"type": "actions", "elements": []}
@@ -93,6 +111,20 @@ class CreateTask:
         return blocks
 
     def create_task(self, desc, points, deadline):
+        """
+        Creates a task in database and returns payload with success message along with the newly created Task ID
+
+        :param desc: Description of task
+        :type desc: str
+        :param points: Points of task
+        :type points: int
+        :param deadline: Deadline of task
+        :type deadline: Date
+        :raise:
+        :return: Blocks list of response payload
+        :rtype: list
+
+        """
         # DB call to add task, returns id
         task = Task()
         task.description = desc
@@ -113,6 +145,8 @@ class CreateTask:
         db.session.commit()
 
         response = deepcopy(self.base_create_task_block_format)
-        response["text"]["text"] = response["text"]["text"].format(greeting=random.choice(self.greetings), id=id)
+        response["text"]["text"] = response["text"]["text"].format(
+            greeting=random.choice(self.greetings), id=id
+        )
         self.payload["blocks"].append(response)
         return self.payload["blocks"]
