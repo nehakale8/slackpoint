@@ -27,8 +27,18 @@ setup(
 
     packages=find_packages(exclude=('test',)),
 
-    install_requires=['numpy', 'pytest'
-                      ],
+    install_requires=[
+        'flask==2.2.2',
+        'slackclient==2.9.4',
+        'python-dotenv==0.21.0',
+        'slackeventsapi==3.0.1',
+        'flask-sqlalchemy==3.0.0',
+        'psycopg2==2.9.3',
+        'pytest==7.1.3',
+        'pytest-mock==3.10.0',
+        'black==22.8.0',
+        'pylint==2.15.3',
+    ],
     dependency_links=[
     ],
     setup_requires=[
