@@ -10,17 +10,14 @@ class TaskDone:
     # if get user id of given slack id/ create if not exists and return user id
     def get_or_create(self, uid):
         instance = db.session.query(User).filter_by(slack_user_id=uid).first()
-
         if instance:
             return instance
-
         else:
             instance = db.session.add(User(slack_user_id=uid))
             db.session.commit()
             return instance
 
     def update_points(self):
-
         helper = ErrorHelper()
         current_task_id = int(self.data.get("text"))
         current_slack_id = self.data.get("user_id")
@@ -40,7 +37,6 @@ class TaskDone:
         # check if task is done
         elif exists is True and len(task_progress) == 0:
             return helper.get_command_help("task_already_done")
-
         # if task is not done
         elif exists is True and task_progress[0].progress == 0.0:
 
@@ -51,6 +47,4 @@ class TaskDone:
                 assignment_id=current_task_id
             ).update(dict(progress=1.0, user_id=user_id))
             db.session.commit()
-
             return helper.get_command_help("task_done")
-        pass
