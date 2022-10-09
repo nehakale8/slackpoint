@@ -1,13 +1,13 @@
 from copy import deepcopy
-
+from commands.help import Help
 
 class ErrorHelper:
-    ErrorPayload = {
+    error_payload = {
         "response_type": "ephemeral",
         "blocks": []
     }
 
-    ErrorBlock_1 = {
+    error_block_1 = {
         "type": "section",
         "text": {
             "type":"mrkdwn",
@@ -15,22 +15,13 @@ class ErrorHelper:
         }
     }
 
-    ErrorBlock_2 = {
-        "type": "section",
-        "text": {
-            "type": "mrkdwn",
-            "text": "{command_help}"
-        }
-    }
-
     def __init__(self) -> None:
-        pass
+        self.command_help = Help()
         
     def get_error_payload(self, command):
-        error = deepcopy(self.ErrorPayload)
-        errorBlock_1 = deepcopy(self.ErrorBlock_1)
-        errorBlock_2 = deepcopy(self.ErrorBlock_2)
-        errorBlock_2["text"]["text"] = errorBlock_2["text"]["text"].format(command_help=self.get_command_help(command))
+        error = deepcopy(self.error_payload)
+        errorBlock_1 = deepcopy(self.error_block_1)
+        errorBlock_2 = self.command_help.help(command_name=command)
         error["blocks"].append(errorBlock_1)
         error["blocks"].append(errorBlock_2)
         return error
@@ -39,4 +30,10 @@ class ErrorHelper:
         command_help = ""
         if command == "create":
             command_help = ">To create a task, follow the format: \n*-d* [description of task] *-p* [points of the task] *-ddl* [deadline of the task].\nFor example: */create* *-d* Hey! This is my new task *-p* 100 *-ddl* 15/10/2022"
+        elif command == "no_task_id":
+            command_help = "The given Task ID does not exist! Please try again..."
+        elif command == "task_already_done":
+            command_help = "The given Task was already completed!"
+        elif command == "task_done":
+            command_help = "Congratulations your task is completed now!"
         return command_help
