@@ -5,6 +5,16 @@ from models import Task, Assignment, User
 
 @pytest.fixture
 def mock_get_sqlalchemy(mocker):
+    """
+    Get mocked object for test case
+
+    :param mocker: Mocker object 
+    :type mocker: Any 
+    :raise:
+    :return: Mocked object
+    :rtype: Any
+
+    """
     mock = mocker.patch(
         "flask_sqlalchemy.model._QueryProperty.__get__").return_value = mocker.Mock()
     return mock
@@ -12,6 +22,16 @@ def mock_get_sqlalchemy(mocker):
 
 @pytest.fixture
 def mock_my_model():
+    """
+    Get mocked Task object
+
+    :param: 
+    :type: 
+    :raise:
+    :return: Mocked Task object
+    :rtype: Task
+
+    """
     my_model = Task(
         task_id="1",
         description="This is Task 1",
@@ -23,6 +43,16 @@ def mock_my_model():
 
 @pytest.fixture
 def mock_pending_task_1():
+    """
+    Get mocked Task object
+
+    :param: 
+    :type: 
+    :raise:
+    :return: Mocked Task object
+    :rtype: Task
+
+    """
     my_model = Task(
         task_id=1,
         description="This is Task 1",
@@ -34,6 +64,16 @@ def mock_pending_task_1():
 
 @pytest.fixture
 def mock_pending_task_2():
+    """
+    Get mocked Task object
+
+    :param: 
+    :type: 
+    :raise:
+    :return: Mocked Task object
+    :rtype: Task
+
+    """
     my_model = Task(
         task_id=2,
         description="This is Task 2",
@@ -45,6 +85,16 @@ def mock_pending_task_2():
 
 @pytest.fixture
 def mock_completed_task_3():
+    """
+    Get mocked Task object
+
+    :param: 
+    :type: 
+    :raise:
+    :return: Mocked Task object
+    :rtype: Task
+
+    """
     my_model = Task(
         task_id=3,
         description="This is Task 3",
@@ -56,6 +106,16 @@ def mock_completed_task_3():
 
 @pytest.fixture
 def mock_completed_task_4():
+    """
+    Get mocked Task object
+
+    :param: 
+    :type: 
+    :raise:
+    :return: Mocked Task object
+    :rtype: Task
+
+    """
     my_model = Task(
         task_id=4,
         description="This is Task 4",
@@ -67,6 +127,16 @@ def mock_completed_task_4():
 
 @pytest.fixture
 def mock_leaderboard_position_1(mocker):
+    """
+    Get mocked Task object
+
+    :param mocker: Mocker object 
+    :type mocker: Any 
+    :raise:
+    :return: Mocked object
+    :rtype: Any
+
+    """
     my_model = mocker.Mock()
     my_model.slack_user_id = "ritwik"
     my_model.total_points = 33
@@ -75,6 +145,16 @@ def mock_leaderboard_position_1(mocker):
 
 @pytest.fixture
 def mock_leaderboard_position_2(mocker):
+    """
+    Get mocked Task object
+
+    :param mocker: Mocker object 
+    :type mocker: Any 
+    :raise:
+    :return: Mocked object
+    :rtype: Any
+
+    """
     my_model = mocker.Mock()
     my_model.slack_user_id = "rishikesh"
     my_model.total_points = 20
@@ -83,6 +163,16 @@ def mock_leaderboard_position_2(mocker):
 
 @pytest.fixture
 def mock_leaderboard_position_3(mocker):
+    """
+    Get mocked Task object
+
+    :param mocker: Mocker object 
+    :type mocker: Any 
+    :raise:
+    :return: Mocked object
+    :rtype: Any
+
+    """
     my_model = mocker.Mock()
     my_model.slack_user_id = "neha"
     my_model.total_points = 10
@@ -91,6 +181,16 @@ def mock_leaderboard_position_3(mocker):
 
 @pytest.fixture
 def mock_leaderboard_position_4(mocker):
+    """
+    Get mocked Task object
+
+    :param mocker: Mocker object 
+    :type mocker: Any 
+    :raise:
+    :return: Mocked object
+    :rtype: Any
+
+    """
     my_model = mocker.Mock()
     my_model.slack_user_id = "vansh"
     my_model.total_points = 9
@@ -99,6 +199,16 @@ def mock_leaderboard_position_4(mocker):
 
 @pytest.fixture
 def mock_leaderboard_position_5(mocker):
+    """
+    Get mocked Task object
+
+    :param mocker: Mocker object 
+    :type mocker: Any 
+    :raise:
+    :return: Mocked object
+    :rtype: Any
+
+    """
     my_model = mocker.Mock()
     my_model.slack_user_id = "mithil"
     my_model.total_points = 5
@@ -107,6 +217,16 @@ def mock_leaderboard_position_5(mocker):
 
 @pytest.fixture
 def mock_leaderboard_position_6(mocker):
+    """
+    Get mocked Task object
+
+    :param mocker: Mocker object 
+    :type mocker: Any 
+    :raise:
+    :return: Mocked object
+    :rtype: Any
+
+    """
     my_model = mocker.Mock()
     my_model.slack_user_id = "dani"
     my_model.total_points = 2

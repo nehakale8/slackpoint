@@ -3,7 +3,20 @@ from helpers.errorhelper import ErrorHelper
 
 
 class TaskDone:
+    """
+    This class handles the Task Completion functionality.
+    """
     def __init__(self, data):
+        """
+        Constructor to initialize data and payload object
+
+        :param: 
+        :type: 
+        :raise:
+        :return: None
+        :rtype: None
+
+        """
         self.data = data
         self.payload = {
             "response_type": "ephemeral",
@@ -12,6 +25,16 @@ class TaskDone:
     
     # if get user id of given slack id/ create if not exists and return user id
     def get_or_create(self, uid):
+        """
+        Fetches user instance, generates the user if the user id is not present in DB
+
+        :param uid: Slack User ID
+        :type uid: str
+        :raise:
+        :return: instance of user fetched/generated from DB
+        :rtype: Any
+
+        """
         instance = db.session.query(User).filter_by(slack_user_id=uid).first()
 
         if instance:
@@ -23,7 +46,16 @@ class TaskDone:
             return instance
 
     def update_points(self):
+        """
+        Marks the task as complete, validates whether the task exists and the task is yet to be completed
 
+        :param: 
+        :type: 
+        :raise:
+        :return: Success message on completion of task, Error message in case of failure of validation checks 
+        :rtype: str
+
+        """
         helper = ErrorHelper()
         current_task_id = int(self.data.get('text'))
         current_slack_id = self.data.get('user_id')
