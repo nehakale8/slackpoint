@@ -127,6 +127,6 @@ def leaderboard():
     payload = l.view_leaderboard()
     return jsonify(payload)
 
-ß
+
 if __name__ == '__main__':
     app.run(host="localhost", port=8000, debug=True)
