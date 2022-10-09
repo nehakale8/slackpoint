@@ -13,9 +13,10 @@ class Help:
 
     def __init__(self):
         self.commands_dictionary["createtask"] = ["*Create Task*", ">To create a task, just try the command */create-task* and you would receive a message from Slack to fill out the details of the task.\n>Enter the description, deadline and the points of the task.\n>For example:\n>*Description*: Hey! This is my new task\n>*Deadline*: 12/31/2022 (just select a date from the date picker)\n>*Points*: 5 (select a point from 1 to 5)\n>And that's it! You should receive a reply from Slack with the generated *Task ID*."]
-        self.commands_dictionary["viewpoints"] = ["*View Points*", ">To view points, follow the format:"]
-        self.commands_dictionary["completetask"] = ["*Complete Task*", ">To complete a task, follow the format:"]
-        self.commands_dictionary["leaderboard"] = ["*Leaderboard*", ">To view the leaderboard:"]
+        self.commands_dictionary["viewcompleted"] = ["*View Completed Tasks*", ">To view completed tasks, just try the command */view-completed*, and there you go! SlackPoint would show you a list of completed tasks."]
+        self.commands_dictionary["viewpending"] = ["*View Pending Task*", ">To view pending tasks, just try the command */view-pending*, and there you go! SlackPoint would show you a list of completed tasks."]
+        self.commands_dictionary["leaderboard"] = ["*Leaderboard*", ">To view the leaderboard, just try the command */leaderboard*, and SlackPoint would show you the top five contenders!"]
+        self.commands_dictionary["taskdone"] = ["*Complete Task*", ">To mark a task as Completed, just try the command */task-done* <Task ID>, and now you are one step closer at being one of the top five contenders!"]
         self.commands_dictionary["help"] = ["*Help*", ">Well, you are viewing it. You don't need my help in that case :D"]
 
         self.payload = {

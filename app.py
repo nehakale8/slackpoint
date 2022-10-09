@@ -28,38 +28,36 @@ slack_events_adapter = SlackEventAdapter(
 
 @app.route('/slack/interactive-endpoint', methods=['POST'])
 def interactive_endpoint():
-    payload = json.loads(request.form.get('payload'))
-    if payload["type"] == "block_actions":
-        actions = payload["actions"]
-        if len(actions) > 0:
-            if actions[0]["action_id"] == "create_action_button":
-                # Create Task - button was clicked
-                channel_id = payload["container"]["channel_id"]
-                user_id = payload["user"]["id"]
-                helper = ErrorHelper()
-                ct = CreateTask()
-                state_values = payload["state"]["values"]
-                desc = None
-                deadline = None
-                points = None
-                for _, val in state_values.items():
-                    if "create_action_description" in val:
-                        desc = val["create_action_description"]["value"]
-                    elif "create_action_deadline" in val:
-                        deadline = val["create_action_deadline"]["selected_date"]
-                    elif "create_action_points" in val:
-                        points = val["create_action_points"]["selected_option"]["value"]
-                if desc is None or deadline is None or points is None:
-                    error_blocks = helper.get_error_payload("createtask")
-                    slack_client.chat_postEphemeral(
-                        channel=channel_id, user=user_id, blocks=error_blocks)
-                else:
-                    blocks = ct.create_task(
-                        desc=desc, points=points, deadline=deadline)
-                    slack_client.chat_postEphemeral(
-                        channel=channel_id, user=user_id, blocks=blocks)
-    return make_response("", 200)
-
+	payload = json.loads(request.form.get('payload'))
+	if payload["type"] == "block_actions":
+		actions = payload["actions"]
+		if len(actions) > 0:
+			if actions[0]["action_id"] == "create_action_button":
+				# Create Task - button was clicked
+				channel_id = payload["container"]["channel_id"]
+				user_id = payload["user"]["id"]
+				helper = ErrorHelper()
+				ct = CreateTask()
+				state_values = payload["state"]["values"]
+				desc = None
+				deadline = None
+				points = None
+				for _,val in state_values.items():
+					if "create_action_description" in val:
+						desc = val["create_action_description"]["value"]
+					elif "create_action_deadline" in val:
+						deadline = val["create_action_deadline"]["selected_date"]
+					elif "create_action_points" in val:
+						if val["create_action_points"]["selected_option"] is not None:
+							points = val["create_action_points"]["selected_option"]["value"]
+						else: points = None
+				if desc is None or deadline is None or points is None: 
+					error_blocks = helper.get_error_payload_blocks("createtask")
+					slack_client.chat_postEphemeral(channel=channel_id, user=user_id, blocks=error_blocks)
+				else: 
+					blocks = ct.create_task(desc=desc, points=points, deadline=deadline)
+					slack_client.chat_postEphemeral(channel=channel_id, user=user_id, blocks=blocks)
+	return make_response("", 200)
 
 @app.route('/')
 def basic():
