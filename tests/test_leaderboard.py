@@ -14,7 +14,7 @@ def test_view_leadership_2tasks(
         order_by.return_value = [mock_leaderboard_task_5, mock_leaderboard_task_6]
 
     # test function
-    lb = Leaderboard(slack_user_id="nkale2")
+    lb = Leaderboard(progress=0.0)
     payload = lb.view_leaderboard()
 
     # expectation
