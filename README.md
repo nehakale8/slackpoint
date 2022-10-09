@@ -4,9 +4,9 @@ SlackPoint!
 [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.7145407.svg)](https://doi.org/10.5281/zenodo.7145407)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 [![Github](https://img.shields.io/badge/language-python-red.svg)](https://docs.python.org/3/)
-[![build](https://github.com/mithildani/se22-hw1-grp14/actions/workflows/test.yml/badge.svg)](https://github.com/mithildani/se22-hw1-grp14/actions)
+[![build](https://github.com/mithildani/se22-hw1-grp14/actions/workflows/test.yml/badge.svg)](https://github.com/nehakale8/slackpoint/actions)
 [![GitHub top language](https://img.shields.io/github/languages/top/mithildani/se22-hw1-grp14)](https://docs.python.org/3/)
-[![GitHub last commit](https://img.shields.io/github/last-commit/mithildani/se22-hw1-grp14)](https://github.com/mithildani/se22-hw1-grp14/commits/main)
+[![GitHub last commit](https://img.shields.io/github/last-commit/mithildani/se22-hw1-grp14)](https://github.com/nehakale8/slackpoint/commits/main)
 [![codecov](https://codecov.io/gh/nehakale8/slackpoint/branch/main/graph/badge.svg?token=1H92SAVB5S)](https://codecov.io/gh/nehakale8/slackpoint)
 ## RoachPack
 
