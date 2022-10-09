@@ -95,7 +95,6 @@ def vcompleted():
 @app.route('/taskdone', methods=["POST"])
 def taskdone():
     data = request.form
-    print("data: ", data)
     td = TaskDone(data)
     payload = td.update_points()
     return jsonify(payload)
@@ -130,6 +129,6 @@ def leaderboard():
     payload = l.view_leaderboard()
     return jsonify(payload)
 
-
+ß
 if __name__ == '__main__':
     app.run(host="localhost", port=8000, debug=True)
