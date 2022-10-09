@@ -15,7 +15,10 @@ class CreateTask:
     greetings = ["Awesome", "Great", "Congratulations", "Well done", "Let's go"]
 
     def __init__(self):
-        self.payload = {"response_type": "ephemeral", "blocks": []}
+        self.payload = {
+            "response_type": "ephemeral", 
+            "blocks": []
+        }
 
     def create_task_input_blocks(self):
         block_description = {
@@ -73,7 +76,10 @@ class CreateTask:
         }
         block_actions_button = {
             "type": "button",
-            "text": {"type": "plain_text", "text": "Create task"},
+            "text": {
+                "type": "plain_text", 
+                "text": "Create task"
+            },
             "action_id": "create_action_button",
         }
         block_actions = {"type": "actions", "elements": []}
@@ -107,8 +113,6 @@ class CreateTask:
         db.session.commit()
 
         response = deepcopy(self.base_create_task_block_format)
-        response["text"]["text"] = response["text"]["text"].format(
-            greeting=random.choice(self.greetings), id=id
-        )
+        response["text"]["text"] = response["text"]["text"].format(greeting=random.choice(self.greetings), id=id)
         self.payload["blocks"].append(response)
         return self.payload["blocks"]
