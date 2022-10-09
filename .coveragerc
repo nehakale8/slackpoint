@@ -3,7 +3,7 @@
 branch = True
 omit =
     # omit everything in /configuration
-    /configuration/*
+    configuration/*
     # omit this single file
     app.py
     setup.py
