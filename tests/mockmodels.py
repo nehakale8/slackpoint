@@ -62,3 +62,27 @@ def mock_completed_task_4():
         deadline="2022-08-26"
     )
     return my_model
+
+
+# ===== Test marked for later release ======
+
+# @pytest.fixture
+# def mock_done_task_1():
+#     my_model = Assignment(
+#         user_id=1,
+#         assignment_id=1,
+#         progress=1.0,
+#         assignment_created_on="2022-10-05"
+#     )
+#     return my_model
+
+# @pytest.fixture
+# def mock_done_task_2():
+#     my_model = Assignment(
+#         user_id=1,
+#         assignment_id=1,
+#         progress=0.0,
+#         assignment_created_on="2022-10-05"
+#     )
+#     return my_model
+# =============================================
