@@ -41,4 +41,65 @@ A lot of teams use Slack to get things done. However when you have ton of things
 ## Working of the project
 
 
+## How the Hell do you use this?
+
+List of miracles that slackpoint can perform:
+
+* Create a new task
+* Mark task as done
+* View pending tasks
+* View completed tasks
+* Ask for help
+
+lets go over these one by one...
+
+#### **1. Create new task:**
+
+You can create a new task by simple using the ``/create-task`` command. We ask for just a few more parameters in addition to that:
+
+ 
+
+Command: ``/create -d [description of task] -p [points of the task] -ddl [deadline of the task]``
+
+Example:
+``/create -d Hey! This is my new task -p 100 -ddl 15/10/2022``
+
+This particular command will create a new task with the description as ``Hey! This is my new task`` having ``100`` points and a deadline of ``15th October 2022``
+
+#### **2. Mark task as done:** 
+
+Here you can mark a task as completed. You just need to give the task ID as a parameter 
+
+Command: ``/task-done [task ID]``
+
+Example: 
+``/task-done 10214``
+
+This will mark the task having task ID ``10214`` as completed. Further, updates records to show that this task is completed by user who posted this command
+
+#### **3. View pending tasks:**
+
+This command will return the list of incomplete tasks. Relax! no parameters required here
+
+Command: ``/viewpending [no parameters]``
+
+Above command will display a list of pending tasks
+
+#### **4. View completed tasks:**
+
+Like the above command this will return a list of completed tasks. No parameters here as well! 
+
+Command: ``/viewcompleted [no parameter]``
+
+Above command will display a list of completed tasks
+
+#### **5. Help:**
+
+Newbie at using slackpoint? You could use some help...
+
+Command: ``/help [no parameters]``
+
+This will provide you will all the available commands and how to use them. Same sh*t this section is doing.
+
+
 ### Project Dependencies
