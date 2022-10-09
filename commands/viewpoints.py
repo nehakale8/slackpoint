@@ -4,6 +4,9 @@ from models import Task, Assignment
 
 
 class ViewPoints:
+    """
+    This class is used to view a list of tasks on the slack bot as per their progress.
+    """
     base_point_block_format = {
         "type": "section",
         "text": {
@@ -13,6 +16,16 @@ class ViewPoints:
     }
 
     def __init__(self, progress: float = 0.0):
+        """
+            Initialise ViewPoints Class. Set progress for filtering tasks.
+
+            :param progress: Optional Filter on tasks according to their progress.
+            :type progress: float
+            :raise:
+            :return: ViewPoints object
+            :rtype: ViewPoints object
+
+            """
         self.progress = progress
         self.payload = {
             "response_type": "ephemeral",
@@ -20,6 +33,16 @@ class ViewPoints:
         }
 
     def get_list(self):
+        """
+            Return a list of tasks formatted in a slack message payload.
+
+            :param None:
+            :type None:
+            :raise None:
+            :return: Slack message payload with list of tasks.
+            :rtype: dict
+
+            """
         tasks = []
         # db query to get all tasks that have progress = progress
         tasks_with_progress = Task.query.join(Assignment). \
