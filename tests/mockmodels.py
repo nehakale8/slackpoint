@@ -63,3 +63,51 @@ def mock_completed_task_4():
         deadline="2022-08-26"
     )
     return my_model
+
+
+@pytest.fixture
+def mock_leaderboard_position_1(mocker):
+    my_model = mocker.Mock()
+    my_model.slack_user_id = "ritwik"
+    my_model.total_points = 33
+    return my_model
+
+
+@pytest.fixture
+def mock_leaderboard_position_2(mocker):
+    my_model = mocker.Mock()
+    my_model.slack_user_id = "rishikesh"
+    my_model.total_points = 20
+    return my_model
+
+
+@pytest.fixture
+def mock_leaderboard_position_3(mocker):
+    my_model = mocker.Mock()
+    my_model.slack_user_id = "neha"
+    my_model.total_points = 10
+    return my_model
+
+
+@pytest.fixture
+def mock_leaderboard_position_4(mocker):
+    my_model = mocker.Mock()
+    my_model.slack_user_id = "vansh"
+    my_model.total_points = 9
+    return my_model
+
+
+@pytest.fixture
+def mock_leaderboard_position_5(mocker):
+    my_model = mocker.Mock()
+    my_model.slack_user_id = "mithil"
+    my_model.total_points = 5
+    return my_model
+
+
+@pytest.fixture
+def mock_leaderboard_position_6(mocker):
+    my_model = mocker.Mock()
+    my_model.slack_user_id = "dani"
+    my_model.total_points = 2
+    return my_model
