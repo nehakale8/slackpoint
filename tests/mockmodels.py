@@ -1,11 +1,12 @@
 import pytest
 
-from models import Task, Assignment
+from models import Task, Assignment, User
 
 
 @pytest.fixture
 def mock_get_sqlalchemy(mocker):
-    mock = mocker.patch("flask_sqlalchemy.model._QueryProperty.__get__").return_value = mocker.Mock()
+    mock = mocker.patch(
+        "flask_sqlalchemy.model._QueryProperty.__get__").return_value = mocker.Mock()
     return mock
 
 
