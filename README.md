@@ -1,5 +1,6 @@
-  <img src = "https://user-images.githubusercontent.com/54413195/194792443-5fa28519-fe68-459c-8973-22dba9eecf13.png" width="150" height="150"/> 
-
+  <img src = "https://user-images.githubusercontent.com/54413195/194794018-28bd8b63-fcf6-40bc-89e5-613a3e89ef40.png" width="450" height="300"/> 
+  
+  
 ![This is an image](https://img.shields.io/badge/purpose-Software_Engineering-blue)
 [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.7145407.svg)](https://doi.org/10.5281/zenodo.7145407)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
