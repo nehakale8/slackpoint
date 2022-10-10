@@ -7,7 +7,7 @@ from tests.mockmodels import (
     mock_leaderboard_position_3,
     mock_leaderboard_position_4,
     mock_leaderboard_position_5,
-    mock_leaderboard_position_6
+    mock_leaderboard_position_6,
 )
 
 
@@ -23,19 +23,19 @@ def test_leaderboard_no_param(
     """
     Test the view pending command
 
-    :param mock_leaderboard_position_1: Mocked Leadership object  
+    :param mock_leaderboard_position_1: Mocked Leadership object
     :type mock_leaderboard_position_1: Any
-    :param mock_leaderboard_position_2: Mocked Leadership object  
+    :param mock_leaderboard_position_2: Mocked Leadership object
     :type mock_leaderboard_position_2: Any
-    :param mock_leaderboard_position_3: Mocked Leadership object  
+    :param mock_leaderboard_position_3: Mocked Leadership object
     :type mock_leaderboard_position_3: Any
-    :param mock_leaderboard_position_4: Mocked Leadership object  
+    :param mock_leaderboard_position_4: Mocked Leadership object
     :type mock_leaderboard_position_4: Any
-    :param mock_leaderboard_position_5: Mocked Leadership object  
+    :param mock_leaderboard_position_5: Mocked Leadership object
     :type mock_leaderboard_position_5: Any
-    :param mock_leaderboard_position_6: Mocked Leadership object  
+    :param mock_leaderboard_position_6: Mocked Leadership object
     :type mock_leaderboard_position_6: Any
-    :param mock_get_sqlalchemy: Mocked SQL Alchemy object  
+    :param mock_get_sqlalchemy: Mocked SQL Alchemy object
     :type mock_get_sqlalchemy: Any
     :raise:
     :return: Assert if test case executed successfully
@@ -43,19 +43,14 @@ def test_leaderboard_no_param(
 
     """
     # Mocking DB call
-    mock_get_sqlalchemy.join.return_value. \
-        join.return_value. \
-        with_entities.return_value. \
-        filter.return_value. \
-        group_by.return_value. \
-        order_by.return_value = [
-            mock_leaderboard_position_1,
-            mock_leaderboard_position_2,
-            mock_leaderboard_position_3,
-            mock_leaderboard_position_4,
-            mock_leaderboard_position_5,
-            mock_leaderboard_position_6,
-        ]
+    mock_get_sqlalchemy.join.return_value.join.return_value.with_entities.return_value.filter.return_value.group_by.return_value.order_by.return_value = [
+        mock_leaderboard_position_1,
+        mock_leaderboard_position_2,
+        mock_leaderboard_position_3,
+        mock_leaderboard_position_4,
+        mock_leaderboard_position_5,
+        mock_leaderboard_position_6,
+    ]
 
     # test function
     lb = Leaderboard()
@@ -63,44 +58,29 @@ def test_leaderboard_no_param(
 
     # expectation
     expected_payload = {
-        'response_type': 'ephemeral',
-        'blocks': [
+        "response_type": "ephemeral",
+        "blocks": [
             {
-                'type': 'section',
-                'text': {
-                    'type': 'mrkdwn',
-                    'text': '1. <@ritwik> has 33 points!'
-                }
+                "type": "section",
+                "text": {"type": "mrkdwn", "text": "1. <@ritwik> has 33 points!"},
             },
             {
-                'type': 'section',
-                'text': {
-                    'type': 'mrkdwn',
-                    'text': '2. <@rishikesh> has 20 points!'
-                }
+                "type": "section",
+                "text": {"type": "mrkdwn", "text": "2. <@rishikesh> has 20 points!"},
             },
             {
-                'type': 'section',
-                'text': {
-                    'type': 'mrkdwn',
-                    'text': '3. <@neha> has 10 points!'
-                }
+                "type": "section",
+                "text": {"type": "mrkdwn", "text": "3. <@neha> has 10 points!"},
             },
             {
-                'type': 'section',
-                'text': {
-                    'type': 'mrkdwn',
-                    'text': '4. <@vansh> has 9 points!'
-                }
+                "type": "section",
+                "text": {"type": "mrkdwn", "text": "4. <@vansh> has 9 points!"},
             },
             {
-                'type': 'section',
-                'text': {
-                    'type': 'mrkdwn',
-                    'text': '5. <@mithil> has 5 points!'
-                }
-            }
-        ]
+                "type": "section",
+                "text": {"type": "mrkdwn", "text": "5. <@mithil> has 5 points!"},
+            },
+        ],
     }
     assert payload == expected_payload, payload
 
@@ -117,19 +97,19 @@ def test_leaderboard_top_2(
     """
     Test the view pending command
 
-    :param mock_leaderboard_position_1: Mocked Leadership object  
+    :param mock_leaderboard_position_1: Mocked Leadership object
     :type mock_leaderboard_position_1: Any
-    :param mock_leaderboard_position_2: Mocked Leadership object  
+    :param mock_leaderboard_position_2: Mocked Leadership object
     :type mock_leaderboard_position_2: Any
-    :param mock_leaderboard_position_3: Mocked Leadership object  
+    :param mock_leaderboard_position_3: Mocked Leadership object
     :type mock_leaderboard_position_3: Any
-    :param mock_leaderboard_position_4: Mocked Leadership object  
+    :param mock_leaderboard_position_4: Mocked Leadership object
     :type mock_leaderboard_position_4: Any
-    :param mock_leaderboard_position_5: Mocked Leadership object  
+    :param mock_leaderboard_position_5: Mocked Leadership object
     :type mock_leaderboard_position_5: Any
-    :param mock_leaderboard_position_6: Mocked Leadership object  
+    :param mock_leaderboard_position_6: Mocked Leadership object
     :type mock_leaderboard_position_6: Any
-    :param mock_get_sqlalchemy: Mocked SQL Alchemy object  
+    :param mock_get_sqlalchemy: Mocked SQL Alchemy object
     :type mock_get_sqlalchemy: Any
     :raise:
     :return: Assert if test case executed successfully
@@ -137,19 +117,14 @@ def test_leaderboard_top_2(
 
     """
     # Mocking DB call
-    mock_get_sqlalchemy.join.return_value. \
-        join.return_value. \
-        with_entities.return_value. \
-        filter.return_value. \
-        group_by.return_value. \
-        order_by.return_value = [
-            mock_leaderboard_position_1,
-            mock_leaderboard_position_2,
-            mock_leaderboard_position_3,
-            mock_leaderboard_position_4,
-            mock_leaderboard_position_5,
-            mock_leaderboard_position_6,
-        ]
+    mock_get_sqlalchemy.join.return_value.join.return_value.with_entities.return_value.filter.return_value.group_by.return_value.order_by.return_value = [
+        mock_leaderboard_position_1,
+        mock_leaderboard_position_2,
+        mock_leaderboard_position_3,
+        mock_leaderboard_position_4,
+        mock_leaderboard_position_5,
+        mock_leaderboard_position_6,
+    ]
 
     # test function
     lb = Leaderboard()
@@ -157,23 +132,17 @@ def test_leaderboard_top_2(
 
     # expectation
     expected_payload = {
-        'response_type': 'ephemeral',
-        'blocks': [
+        "response_type": "ephemeral",
+        "blocks": [
             {
-                'type': 'section',
-                'text': {
-                    'type': 'mrkdwn',
-                    'text': '1. <@ritwik> has 33 points!'
-                }
+                "type": "section",
+                "text": {"type": "mrkdwn", "text": "1. <@ritwik> has 33 points!"},
             },
             {
-                'type': 'section',
-                'text': {
-                    'type': 'mrkdwn',
-                    'text': '2. <@rishikesh> has 20 points!'
-                }
-            }
-        ]
+                "type": "section",
+                "text": {"type": "mrkdwn", "text": "2. <@rishikesh> has 20 points!"},
+            },
+        ],
     }
     assert payload == expected_payload, payload
 
@@ -190,19 +159,19 @@ def test_leaderboard_no_completed_task(
     """
     Test the view pending command
 
-    :param mock_leaderboard_position_1: Mocked Leadership object  
+    :param mock_leaderboard_position_1: Mocked Leadership object
     :type mock_leaderboard_position_1: Any
-    :param mock_leaderboard_position_2: Mocked Leadership object  
+    :param mock_leaderboard_position_2: Mocked Leadership object
     :type mock_leaderboard_position_2: Any
-    :param mock_leaderboard_position_3: Mocked Leadership object  
+    :param mock_leaderboard_position_3: Mocked Leadership object
     :type mock_leaderboard_position_3: Any
-    :param mock_leaderboard_position_4: Mocked Leadership object  
+    :param mock_leaderboard_position_4: Mocked Leadership object
     :type mock_leaderboard_position_4: Any
-    :param mock_leaderboard_position_5: Mocked Leadership object  
+    :param mock_leaderboard_position_5: Mocked Leadership object
     :type mock_leaderboard_position_5: Any
-    :param mock_leaderboard_position_6: Mocked Leadership object  
+    :param mock_leaderboard_position_6: Mocked Leadership object
     :type mock_leaderboard_position_6: Any
-    :param mock_get_sqlalchemy: Mocked SQL Alchemy object  
+    :param mock_get_sqlalchemy: Mocked SQL Alchemy object
     :type mock_get_sqlalchemy: Any
     :raise:
     :return: Assert if test case executed successfully
@@ -210,12 +179,9 @@ def test_leaderboard_no_completed_task(
 
     """
     # Mocking DB call
-    mock_get_sqlalchemy.join.return_value. \
-        join.return_value. \
-        with_entities.return_value. \
-        filter.return_value. \
-        group_by.return_value. \
-        order_by.return_value = []
+    mock_get_sqlalchemy.join.return_value.join.return_value.with_entities.return_value.filter.return_value.group_by.return_value.order_by.return_value = (
+        []
+    )
 
     # test function
     lb = Leaderboard()
@@ -223,15 +189,15 @@ def test_leaderboard_no_completed_task(
 
     # expectation
     expected_payload = {
-        'response_type': 'ephemeral',
-        'blocks': [
+        "response_type": "ephemeral",
+        "blocks": [
             {
                 "type": "section",
                 "text": {
                     "type": "mrkdwn",
-                    "text": ">Looks like the competition hasn't started yet :("
-                }
+                    "text": ">Looks like the competition hasn't started yet :(",
+                },
             }
-        ]
+        ],
     }
     assert payload == expected_payload, payload

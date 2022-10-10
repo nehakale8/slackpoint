@@ -1,26 +1,24 @@
 from copy import deepcopy
 from commands.help import Help
 
+
 class ErrorHelper:
-    error_payload = {
-        "response_type": "ephemeral",
-        "blocks": []
-    }
+    error_payload = {"response_type": "ephemeral", "blocks": []}
 
     error_block_1 = {
         "type": "section",
         "text": {
-            "type":"mrkdwn",
-            "text": ">Oops! Something went wrong. Please try again with the correct command rules."
-        }
+            "type": "mrkdwn",
+            "text": ">Oops! Something went wrong. Please try again with the correct command rules.",
+        },
     }
 
     def __init__(self) -> None:
         """
         Constructor to initialize command_help object
 
-        :param: 
-        :type: 
+        :param:
+        :type:
         :raise:
         :return: None
         :rtype: None
@@ -28,12 +26,12 @@ class ErrorHelper:
         """
 
         self.command_help = Help()
-        
+
     def get_error_payload_blocks(self, command):
         """
         Get compiled error blocks for a particular command
 
-        :param command:  Command name 
+        :param command:  Command name
         :type command: str
         :raise:
         :return: List of blocks
@@ -52,7 +50,7 @@ class ErrorHelper:
         Get compiled error blocks for a particular command
 
         :param command: Command name
-        :type command: str 
+        :type command: str
         :raise:
         :return: Error message for given command name
         :rtype: str

@@ -2,16 +2,18 @@ from copy import deepcopy
 import random
 from models import *
 
+
 class CreateTask:
     """
     This class handles the Create Task functionality.
     """
+
     base_create_task_block_format = {
         "type": "section",
         "text": {
             "type": "mrkdwn",
-            "text": ">{greeting}! Your task SP-{id} was created successfully."
-        }
+            "text": ">{greeting}! Your task SP-{id} was created successfully.",
+        },
     }
 
     greetings = ["Awesome", "Great", "Congratulations", "Well done", "Let's go"]
@@ -20,15 +22,15 @@ class CreateTask:
         """
         Constructor to initialize payload object
 
-        :param: 
-        :type: 
+        :param:
+        :type:
         :raise:
         :return: None
         :rtype: None
 
         """
         self.payload = {
-            "response_type": "ephemeral",
+            "response_type": "ephemeral", 
             "blocks": []
         }
 
@@ -36,8 +38,8 @@ class CreateTask:
         """
         Create blocks list containing input fields for description, deadline, points of a task, along with a button to create the task
 
-        :param: 
-        :type: 
+        :param:
+        :type:
         :raise:
         :return: Blocks list
         :rtype: list
@@ -47,13 +49,9 @@ class CreateTask:
             "type": "input",
             "element": {
                 "type": "plain_text_input",
-                "action_id": "create_action_description"
+                "action_id": "create_action_description",
             },
-            "label": {
-                "type": "plain_text",
-                "text": "Description",
-                "emoji": True
-            }
+            "label": {"type": "plain_text", "text": "Description", "emoji": True},
         }
         block_deadline = {
             "type": "input",
@@ -63,87 +61,52 @@ class CreateTask:
                 "placeholder": {
                     "type": "plain_text",
                     "text": "Select a date",
-                    "emoji": True
+                    "emoji": True,
                 },
-                "action_id": "create_action_deadline"
+                "action_id": "create_action_deadline",
             },
-            "label": {
-                "type": "plain_text",
-                "text": "Deadline",
-                "emoji": True
-            }
+            "label": {"type": "plain_text", "text": "Deadline", "emoji": True},
         }
         block_points = {
             "type": "input",
             "element": {
                 "type": "static_select",
-                "placeholder": {
-                    "type": "plain_text",
-                    "text": "Select",
-                    "emoji": True
-                },
+                "placeholder": {"type": "plain_text", "text": "Select", "emoji": True},
                 "options": [
                     {
-                        "text": {
-                            "type": "plain_text",
-                            "text": "1",
-                            "emoji": False
-                        },
-                        "value": "1"
+                        "text": {"type": "plain_text", "text": "1", "emoji": False},
+                        "value": "1",
                     },
                     {
-                        "text": {
-                            "type": "plain_text",
-                            "text": "2",
-                            "emoji": False
-                        },
-                        "value": "2"
+                        "text": {"type": "plain_text", "text": "2", "emoji": False},
+                        "value": "2",
                     },
                     {
-                        "text": {
-                            "type": "plain_text",
-                            "text": "3",
-                            "emoji": False
-                        },
-                        "value": "3"
+                        "text": {"type": "plain_text", "text": "3", "emoji": False},
+                        "value": "3",
                     },
                     {
-                        "text": {
-                            "type": "plain_text",
-                            "text": "4",
-                            "emoji": False
-                        },
-                        "value": "4"
+                        "text": {"type": "plain_text", "text": "4", "emoji": False},
+                        "value": "4",
                     },
                     {
-                        "text": {
-                            "type": "plain_text",
-                            "text": "5",
-                            "emoji": False
-                        },
-                        "value": "5"
-                    }
+                        "text": {"type": "plain_text", "text": "5", "emoji": False},
+                        "value": "5",
+                    },
                 ],
-                "action_id": "create_action_points"
+                "action_id": "create_action_points",
             },
-            "label": {
-                "type": "plain_text",
-                "text": "Points",
-                "emoji": True
-            }
+            "label": {"type": "plain_text", "text": "Points", "emoji": True},
         }
         block_actions_button = {
             "type": "button",
             "text": {
-                "type": "plain_text",
+                "type": "plain_text", 
                 "text": "Create task"
             },
-            "action_id": "create_action_button"
+            "action_id": "create_action_button",
         }
-        block_actions = {
-            "type": "actions",
-            "elements": []
-        }
+        block_actions = {"type": "actions", "elements": []}
         block_actions["elements"].append(block_actions_button)
 
         blocks = []
@@ -152,19 +115,19 @@ class CreateTask:
         blocks.append(block_points)
         blocks.append(block_actions)
         return blocks
-        
+
     def create_task(self, desc, points, deadline):
         """
         Creates a task in database and returns payload with success message along with the newly created Task ID
 
-        :param desc: Description of task 
+        :param desc: Description of task
         :type desc: str
-        :param points: Points of task 
+        :param points: Points of task
         :type points: int
-        :param deadline: Deadline of task 
+        :param deadline: Deadline of task
         :type deadline: Date
         :raise:
-        :return: Blocks list of response payload 
+        :return: Blocks list of response payload
         :rtype: list
 
         """
