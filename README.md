@@ -112,6 +112,17 @@ This will provide you will all the available commands and how to use them. Same 
 * coverage
 * pytest-cov
 
+### Future of this project
+
+* Assign users to tasks while creating each task
+* Add a command to reassign users
+* Add a command to edit an existing task
+* Progress of a task is currently binary. It can be improved to allow a percentage progress improvement
+* Deploy the service on the cloud
+* Improve code coverage
+* UI/UX: Improve leaderboard command response to show gifs/graphs to further make the leaderboard more attractive and gamify it
+
+
 ### RoachPack
 
 Heyy! We are a group of Graduate students at NC State University, or to be more specific, we are dreamers who want to be pioneers of the Computer Science world.
