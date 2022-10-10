@@ -1,3 +1,6 @@
+
+<img src = "https://user-images.githubusercontent.com/54413195/194792443-5fa28519-fe68-459c-8973-22dba9eecf13.png" width="150" height="150"/>
+
 ## SlackPoint!
 
 ![This is an image](https://img.shields.io/badge/purpose-Software_Engineering-blue)
