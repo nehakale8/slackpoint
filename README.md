@@ -1,12 +1,13 @@
-## SlackPoint!
-
+  <img src = "https://user-images.githubusercontent.com/54413195/194794018-28bd8b63-fcf6-40bc-89e5-613a3e89ef40.png" width="450" height="300"/> 
+  
+  
 ![This is an image](https://img.shields.io/badge/purpose-Software_Engineering-blue)
 [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.7145407.svg)](https://doi.org/10.5281/zenodo.7145407)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 [![Github](https://img.shields.io/badge/language-python-red.svg)](https://docs.python.org/3/)
 [![build](https://github.com/mithildani/se22-hw1-grp14/actions/workflows/test.yml/badge.svg)](https://github.com/nehakale8/slackpoint/actions)
-[![GitHub top language](https://img.shields.io/github/languages/top/mithildani/se22-hw1-grp14)](https://docs.python.org/3/)
-[![GitHub last commit](https://img.shields.io/github/last-commit/mithildani/se22-hw1-grp14)](https://github.com/nehakale8/slackpoint/commits/main)
+[![GitHub top language](https://img.shields.io/github/languages/top/nehakale8/slackpoint)](https://docs.python.org/3/)
+[![GitHub last commit](https://img.shields.io/github/last-commit/nehakale8/slackpoint)](https://github.com/nehakale8/slackpoint/commits/main)
 [![codecov](https://codecov.io/gh/nehakale8/slackpoint/branch/main/graph/badge.svg?token=1H92SAVB5S)](https://codecov.io/gh/nehakale8/slackpoint)
 
 
@@ -21,7 +22,6 @@ A lot of teams use Slack to get things done. However when you have ton of things
   <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg" width="40" height="40" /> Python
   <br/>
  <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/postgresql/postgresql-original.svg" width="40" height="40" /> PostgreSQL
-
 
 ### How the Hell do you use this?
 
@@ -98,6 +98,84 @@ Command: ``/help [no parameters]``
 
 This will provide you will all the available commands and how to use them. Same sh*t this section is doing.
 
+## Project documentation
+The `docs` folder incorporates all necessary documents and documentation in our project.
+
+## Tools used
+Code formatter: black and flake8
+
+Tech stack: Flask, PostgreSQL
+ 
+## 📖 Getting started:
+
+  - ### Prerequisite:
+      - Download [Python3.x](https://www.python.org/downloads/).
+      - Download [Flask](https://flask.palletsprojects.com/en/2.2.x/installation/).
+      - Download [PostgreSQL](https://www.postgresql.org/download/)
+      - Download [Pgadmin](https://www.pgadmin.org/download/)
+
+   ## Run Locally
+
+Create a virtual environment:
+
+```bash
+  python3.x -m venv test_env
+```
+
+Activate the virtual environment:
+Linux/MacOS:
+```bash
+  source test_env/bin/activate
+```
+Windows:
+```bash
+  ./test_env/Scripts/activate
+```
+
+Clone the project
+
+```bash
+  git clone https://github.com/nehakale8/slackpoint.git
+```
+
+Go to the project directory
+
+```bash
+  cd Slackpoint
+```
+
+Install dependencies
+
+```bash 
+  pip install -r requirements.txt
+```
+Log on to api.slack.com and create your own slack bot.
+
+On ngrok shell run 'ngrok http 5000' to get the public IP address in your local machine. 
+
+Finally add all the /commands in the bot configuration and paste the url from ngrok shell to requesting url section in the bot configuration.
+
+Start the server
+
+```bash
+  flask run
+```
+
+     - Site will be hosted at:
+       `http://127.0.0.1:5000/` 
+       
+Before creating the database, 
+
+(1) Change the local path of PostgreSQL in .env file (DATABASE_URL= 'postgresql://postgres:(password)@localhost/(database name from PgAdmin') 
+
+(2) Provide the Slack sigining secret and Slack bot token from the bot you created. 
+
+To create tables in the database,
+```bash
+First run the command 'flask shell'
+Next command to create the database - 'db.create_all()'
+```
+ 
 ### Project Dependencies
 
 * flask
