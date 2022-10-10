@@ -20,6 +20,10 @@ Gamify your slack tasks! 💻
 
 A lot of teams use Slack to get things done. However when you have ton of things to do with no short term rewards in sight, it gets difficult to check off those tasks. That's where SlackPoint comes to the rescue! SlackPoint aims to make work more fun and get people motivated to finish their tasks by gamifying Slack!
 
+
+https://user-images.githubusercontent.com/68791644/194795317-2115c60b-adb9-42ba-88d3-868f57001278.mp4
+
+
 ## Built with
   <img src = "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/flask/flask-original.svg" width="40" height="40"/> Flask
   <br/>
