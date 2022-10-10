@@ -1,11 +1,7 @@
 <img src = "https://user-images.githubusercontent.com/48649849/194794889-3d3dc808-25f7-4c91-bfd5-10f9294e2d41.png" width="1080" height="200"/> 
   
-  
-
-  
-  
 ![This is an image](https://img.shields.io/badge/purpose-Software_Engineering-blue)
-[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.7145407.svg)](https://doi.org/10.5281/zenodo.7145407)![Uploading SlackPoint logo (1).png…]()
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.7145407.svg)](https://doi.org/10.5281/zenodo.7145407)
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 [![Github](https://img.shields.io/badge/language-python-red.svg)](https://docs.python.org/3/)
@@ -157,7 +153,9 @@ Log on to api.slack.com and create your own slack bot.
 
 On ngrok shell run 'ngrok http 5000' to get the public IP address in your local machine. 
 
-Finally add all the /commands in the bot configuration and paste the url from ngrok shell to requesting url section in the bot configuration.
+Add all the /commands in the bot configuration and paste the url from ngrok shell to requesting url section in the bot configuration.
+
+Finally, change the URL in interactivity and shortcuts, URL: <BaseURL>/slack/interactive-endpoint. 
 
 Start the server
 
@@ -170,9 +168,11 @@ Start the server
        
 Before creating the database, 
 
-(1) Change the local path of PostgreSQL in .env file (DATABASE_URL= 'postgresql://postgres:(password)@localhost/(database name from PgAdmin') 
-
-(2) Provide the Slack sigining secret and Slack bot token from the bot you created. 
+(1) Create a database in PgAdmin with any name convention.
+  
+(2) Change the local path of PostgreSQL in .env file (DATABASE_URL= 'postgresql://postgres:(password)@localhost/(database name from PgAdmin') 
+  
+(3) Provide the Slack sigining secret and Slack bot token from the bot you created. 
 
 To create tables in the database,
 ```bash
