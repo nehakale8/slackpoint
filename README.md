@@ -22,7 +22,6 @@ A lot of teams use Slack to get things done. However when you have ton of things
   <br/>
  <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/postgresql/postgresql-original.svg" width="40" height="40" /> PostgreSQL
 
-
 ### How the Hell do you use this?
 
 List of miracles that slackpoint can perform✨:
@@ -97,6 +96,14 @@ Command: ``/help [no parameters]``
 ![Help GIF](https://i.imgur.com/RNykp6p.gif)
 
 This will provide you will all the available commands and how to use them. Same sh*t this section is doing.
+
+## Project documentation
+The `docs` folder incorporates all necessary documents and documentation in our project.
+
+## Tools used
+Code formatter: black and flake8
+
+Tech stack: Flask, PostgreSQL
 
 ### Project Dependencies
 
