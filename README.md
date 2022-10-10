@@ -33,12 +33,7 @@ lets go over these one by one...
 
 You can create a new task by simple using the ``/create-task`` command. We ask for just a few more parameters in addition to that:
 
-
-
-Command: ``/create -d [description of task] -p [points of the task] -ddl [deadline of the task]``
-
-Example:
-``/create -d Hey! This is my new task -p 100 -ddl 15/10/2022``
+Command: ``/create``
 
 ![Create Task GIF](https://i.imgur.com/lUtX23a.gif)
 
