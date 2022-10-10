@@ -33,12 +33,7 @@ lets go over these one by one...
 
 You can create a new task by simple using the ``/create-task`` command. We ask for just a few more parameters in addition to that:
 
-
-
-Command: ``/create -d [description of task] -p [points of the task] -ddl [deadline of the task]``
-
-Example:
-``/create -d Hey! This is my new task -p 100 -ddl 15/10/2022``
+Command: ``/create``
 
 ![Create Task GIF](https://i.imgur.com/lUtX23a.gif)
 
@@ -123,7 +118,7 @@ This will provide you will all the available commands and how to use them. Same 
 * UI/UX: Improve leaderboard command response to show gifs/graphs to further make the leaderboard more attractive and gamify it
 
 
-### RoachPack
+## Developed by RoachPack
 
 Heyy! We are a group of Graduate students at NC State University, or to be more specific, we are dreamers who want to be pioneers of the Computer Science world.
 Consider this homework to be one of our many steps at achieving our dreams! :wink:
@@ -155,4 +150,4 @@ A no-nonsense serious and dedicated prankster / comedian of the group, with an u
 
 ### Reach out to us!
 
-For any doubts or queries, reach out to our ``<developer>`` team slackpoint.developers@gmail.com
+For any doubts or queries, reach out to our Developer Team @ slackpoint.developers@gmail.com
