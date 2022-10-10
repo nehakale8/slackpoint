@@ -1,7 +1,4 @@
-
-<img src = "https://user-images.githubusercontent.com/54413195/194792443-5fa28519-fe68-459c-8973-22dba9eecf13.png" width="150" height="150"/>
-
-## SlackPoint!
+  <img src = "https://user-images.githubusercontent.com/54413195/194792443-5fa28519-fe68-459c-8973-22dba9eecf13.png" width="150" height="150"/> 
 
 ![This is an image](https://img.shields.io/badge/purpose-Software_Engineering-blue)
 [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.7145407.svg)](https://doi.org/10.5281/zenodo.7145407)
@@ -107,6 +104,7 @@ The `docs` folder incorporates all necessary documents and documentation in our 
 Code formatter: black and flake8
 
 Tech stack: Flask, PostgreSQL
+ 
 ## 📖 Getting started:
 
   - ### Prerequisite:
@@ -150,6 +148,11 @@ Install dependencies
 ```bash 
   pip install -r requirements.txt
 ```
+Log on to api.slack.com and create your own slack bot.
+
+On ngrok shell run 'ngrok http 5000' to get the public IP address in your local machine. 
+
+Finally add all the /commands in the bot configuration and paste the url from ngrok shell to requesting url section in the bot configuration.
 
 Start the server
 
@@ -159,8 +162,14 @@ Start the server
 
      - Site will be hosted at:
        `http://127.0.0.1:5000/` 
+       
+Before creating the database, 
 
-To create tables in the database
+(1) Change the local path of PostgreSQL in .env file (DATABASE_URL= 'postgresql://postgres:(password)@localhost/(database name from PgAdmin') 
+
+(2) Provide the Slack sigining secret and Slack bot token from the bot you created. 
+
+To create tables in the database,
 ```bash
 First run the command 'flask shell'
 Next command to create the database - 'db.create_all()'
