@@ -1,3 +1,4 @@
+import sqlalchemy
 from datetime import datetime
 from sqlalchemy import ForeignKey
 from flask_sqlalchemy import SQLAlchemy

@@ -216,6 +216,34 @@ def leaderboard():
     payload = l.view_leaderboard()
     return jsonify(payload)
 
+@app.route("/summary", methods=["POST"])
+def leaderboard():
+    """
+    Endpoint to view the leaderboard
+
+    :param:
+    :type:
+    :raise:
+    :return: Response object with payload object containing details of champions leading the SlackPoint challenge
+    :rtype: Response
+
+    """
+#Get pending tasks first
+    vp = ViewPoints(progress=0.0)
+    payloadPendingTasks = "Pending Tasks are:"+vp.get_list()
+
+#Get done task
+    data = request.form
+    td = TaskDone(data)
+    payloadDoneTasks ="Completed Tasks are:"+ td.update_points()
+
+#Get leaderboard
+    l = Leaderboard()
+    payloadLeaderboard ="Leaderboard is :" l.view_leaderboard()
+
+    payload= payloadPendingTasks+payloadDoneTasks+payloadLeaderboard
+    
+    return jsonify(payload)
 
 if __name__ == "__main__":
     app.run(host="localhost", port=8000, debug=True)
