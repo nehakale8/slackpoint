@@ -219,7 +219,7 @@ def leaderboard():
 @app.route("/summary", methods=["POST"])
 def summary():
     """
-    Endpoint to view the leaderboard
+    Endpoint to view the pending tasks , completed taks and leaderboard
 
     :param:
     :type:
