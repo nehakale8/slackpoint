@@ -217,7 +217,7 @@ def leaderboard():
     return jsonify(payload)
 
 @app.route("/summary", methods=["POST"])
-def leaderboard():
+def summary():
     """
     Endpoint to view the leaderboard
 
@@ -242,7 +242,7 @@ def leaderboard():
     payloadLeaderboard ="Leaderboard is :" l.view_leaderboard()
 
     payload= payloadPendingTasks+payloadDoneTasks+payloadLeaderboard
-    
+
     return jsonify(payload)
 
 if __name__ == "__main__":
