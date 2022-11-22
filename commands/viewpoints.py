@@ -56,6 +56,7 @@ class ViewPoints:
             .all()
         )
         tasks.extend(tasks_with_progress)
+        # print(tasks)
         # parse them
         for task in tasks:
             point = deepcopy(self.base_point_block_format)
