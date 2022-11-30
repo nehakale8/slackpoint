@@ -13,6 +13,7 @@ from configuration.env_config import Config
 from commands.createtask import CreateTask
 from helpers.errorhelper import ErrorHelper
 from json import dumps
+from helpers import helper
 
 
 app = Flask(__name__)
@@ -235,7 +236,7 @@ def summary():
     vp = ViewPoints(progress=0.0)
     payload = vp.get_list()
 
-    print("payload", payload)
+    #print("payload", payload)
     pending_tasks = ''
     for task in payload:
         taskid = task[0]
@@ -333,8 +334,22 @@ def summary():
             }
             parent_msg['blocks'].append(child_msg)
 
-    return jsonify(parent_msg)
+    return parent_msg
 
+@app.route("/summary-cron", methods=["POST"])
+def cron_summary():
+    """
+    Endpoint for the cronjob to automatically send summary after every X minutes/hours/seconds
+
+    :param:
+    :type:
+    :raise:
+    :return: Response object with payload object containing details of champions leading the SlackPoint challenge
+    :rtype: Response
+
+    """
+    helper.send_slack_message(summary())
+    return jsonify({"success": True})
 
 
 
